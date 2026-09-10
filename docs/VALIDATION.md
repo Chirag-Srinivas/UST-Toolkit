@@ -1,10 +1,10 @@
 # Local release validation
 
-**Fresh-install follow-up:** the unchanged release bundle completed a small
-synthetic Java/MATSim run and browser checks on 10 September 2026, using a
-fresh Python environment on Windows. The documented empty-public-transport
-path failed. See [the detailed validation report](FRESH-INSTALL-VALIDATION.md)
-for the qualified result, event counts, dependency versions and required fix.
+**Current follow-up:** version 1.0.1 fixes the documented no-PT scenario.
+Fifteen tests pass, and full Java runs pass for empty service lists and
+explicitly disabled PT. See [fix validation](OPTIONAL-TRANSPORT-FIX.md).
+The [original 1.0.0 report](FRESH-INSTALL-VALIDATION.md) records the earlier
+configured-bus run, dashboard checks and defect.
 
 The following records the earlier preparation checks and their original scope.
 

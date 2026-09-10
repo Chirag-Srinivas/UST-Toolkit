@@ -22,7 +22,7 @@ import config
 from module0_network_cleaning import NetworkPreparer
 from module1_topology import TopologyBuilder
 from module2_demand import DemandGenerator
-from module3_transport import TransportSupplyGenerator
+from module3_transport import TransportSupplyGenerator, normalise_transport_config
 from module4_config import ConfigManager
 from module5 import AnalyticsExtractor, ExtractionPaths, SCHEMA_VERSION
 
@@ -30,6 +30,11 @@ from module5 import AnalyticsExtractor, ExtractionPaths, SCHEMA_VERSION
 def validate_configuration():
     """Fail early with an actionable list of missing scenario inputs."""
     errors = []
+    scheduled_transport = False
+    try:
+        scheduled_transport = bool(normalise_transport_config(config.TRANSPORT_SUPPLY)["services"])
+    except (ValueError, TypeError, KeyError) as exc:
+        errors.append(f"Invalid TRANSPORT_SUPPLY: {exc}")
     base_network = Path(config.BASE_NETWORK_PATH).expanduser()
     matsim_jar = Path(config.MATSIM_JAR_PATH).expanduser()
 
@@ -100,6 +105,13 @@ def validate_configuration():
             if not isinstance(event, dict):
                 errors.append(f"DEMAND_EVENTS[{index}] must be a dictionary.")
                 continue
+            if not scheduled_transport and (
+                event.get("pt_plan_enabled", False)
+                or str(event.get("initial_ground_plan", "car")).lower() == "pt"
+            ):
+                errors.append(
+                    f"DEMAND_EVENTS[{index}] requests PT without any scheduled services."
+                )
             event_vertiports = {
                 str(event.get("vertiport_id")),
                 str(event.get("dest_vertiport_id")),

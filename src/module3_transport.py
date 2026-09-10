@@ -323,9 +323,18 @@ def normalise_transport_config(raw: dict) -> dict:
     """Return a validated copy of the configured transport supply."""
     if not isinstance(raw, dict):
         raise TransportConfigError("TRANSPORT_SUPPLY must be a mapping.")
-    supply = _expand_simple_transport_config(raw)
-    if not bool(supply.get("enabled", True)):
-        supply["enabled"] = False
+    disabled = not bool(raw.get("enabled", True))
+    supply = deepcopy(raw) if disabled else _expand_simple_transport_config(raw)
+    if disabled or (supply.get("input_mode") == "locations" and not supply["services"]):
+        # Module 3 still supplies the UAM fleet and empty transit XML files.
+        # Ignore disabled PT declarations and never select a phantom PT network.
+        supply.update(
+            enabled=False,
+            network={"strategy": "network"},
+            stops=[], services=[], vehicle_types=[], transfers=[],
+            circulation_fleets=[], stops_by_id={}, services_by_id={},
+            vehicle_types_by_id={},
+        )
         return supply
     if supply.get("input_mode", "configured") not in {"configured", "locations"}:
         raise TransportConfigError(
@@ -1367,6 +1376,13 @@ def write_transit_vehicles(
             )
         },
     )
+    if not supply["vehicle_types"]:
+        # MATSim's v2 schema requires one type even when there are no vehicles.
+        # This unused definition creates no fleet, departures, or PT service.
+        element = ET.SubElement(root, f"{{{namespace}}}vehicleType", id="unused_no_pt")
+        ET.SubElement(element, f"{{{namespace}}}description").text = (
+            "Schema-required unused type for a scenario without scheduled PT."
+        )
     for vehicle_type in supply["vehicle_types"]:
         element = ET.SubElement(
             root, f"{{{namespace}}}vehicleType", id=vehicle_type["id"]
@@ -1606,9 +1622,6 @@ class TransportSupplyGenerator:
         network_output: Path | None = None,
         output_directory: Path | None = None,
     ) -> TransportSupplyPaths:
-        if not self.settings.get("enabled", True):
-            raise ValueError("Module 3 transport supply is disabled in config.py.")
-
         project_root = Path(__file__).resolve().parents[1]
         output_directory = Path(
             output_directory
@@ -1640,7 +1653,10 @@ class TransportSupplyGenerator:
         )
 
         print("--- Module 3: TransportSupplyGenerator initiated ---")
-        if self.settings["network"]["strategy"] == "network":
+        if not self.settings["services"]:
+            topology = {"stop_links": {}, "route_links": {}}
+            print("[Module 3] No scheduled PT: writing empty transit supply and the UAM fleet.")
+        elif self.settings["network"]["strategy"] == "network":
             topology = resolve_network_routes(base_network, self.settings)
         else:
             topology = build_pseudo_network(self.settings)
@@ -1655,6 +1671,7 @@ class TransportSupplyGenerator:
 
         manifest = {
             "module": 3,
+            "scheduled_transport_enabled": bool(self.settings["services"]),
             "input_mode": self.settings.get("input_mode"),
             "data_status": self.settings.get("data_status", "unspecified"),
             "files": {

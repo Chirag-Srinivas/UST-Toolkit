@@ -1,15 +1,15 @@
 # UAM Scenario Toolkit (UST)
 
-**Download the complete toolkit:** [UST-Toolkit-v1.0.0.zip and checksums](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.0-prepared).
+**Download the complete toolkit:** [UST-Toolkit-v1.0.1.zip and checksums](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.1-prepared).
 This prepared prerelease includes the exact modified MATSim-UAM runtime and
 compiled dashboard. No manual Java edits or rebuild are needed. See
 [download, checksum and setup instructions](docs/RUNTIME-DOWNLOAD.md).
 Sign in with repository access while this repository is private. GitHub's
 automatic source ZIP and Git clones do not include the runtime JAR.
 
-**Validation status:** a fresh-install simulation and dashboard test passed
-with configured public transport. The documented empty train/bus setup fails
-in Module 3 and needs correction. See [test results and limits](docs/FRESH-INSTALL-VALIDATION.md).
+**Validation status:** version 1.0.1 fixes UAM/car-only scenarios with empty
+train/bus lists or disabled public transport. Fifteen tests and both no-PT
+Java smoke scenarios pass. See [fix validation and limits](docs/OPTIONAL-TRANSPORT-FIX.md).
 
 UST is a modular toolkit for designing, running, and inspecting Urban Air
 Mobility scenarios with MATSim-UAM. It builds vertiport micro-topology,
@@ -443,13 +443,13 @@ One repository supports two versioned downloads:
 
 | Download | Intended use |
 | --- | --- |
-| `UST-Toolkit-v1.0.0.zip` | Configure a fresh scenario; includes the modified runtime and dashboard. |
+| `UST-Toolkit-v1.0.1.zip` | Configure a fresh scenario; includes the modified runtime and dashboard. |
 | `UST-MSc-Research-Archive-v1.0.0.zip` | Explore the frozen MSc project, including definitive and clearly labelled historical results. |
 
 The research archive preserves `IRP_RESULTS_FINAL` (including T1) as the
 definitive study. See [study provenance](experiments/msc-study/README.md).
 Large downloads are release assets or external archive links, not Git files.
-The [prepared toolkit prerelease](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.0-prepared)
+The [prepared toolkit prerelease](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.1-prepared)
 provides the exact toolkit bundle and checksum. The MSc archive download is
 not hosted here. Public-release review remains documented in
 [release readiness](docs/RELEASE-READINESS.md).

@@ -1,14 +1,14 @@
 # Release preparation status
 
 The source and documentation are uploaded to a private GitHub repository.
-The unchanged prepared toolkit bundle is distributed as a prerelease with
+The corrected 1.0.1 toolkit bundle is distributed as a prerelease with
 checksums; see [runtime download and setup](RUNTIME-DOWNLOAD.md).
 This does not complete the public-release or source-to-binary review.
 
-Fresh-install testing found a release-blocking mismatch: the documented
-UAM/car-only setup with empty train/bus lists fails in Module 3. A configured
-synthetic bus-service run completed both iterations and dashboard checks.
-See [the fresh-install validation report](FRESH-INSTALL-VALIDATION.md).
+Version 1.0.1 fixes the empty-public-transport defect found in 1.0.0.
+Both empty train/bus lists and explicitly disabled PT complete a synthetic
+Java simulation with the unchanged runtime. See [fix validation](OPTIONAL-TRANSPORT-FIX.md)
+and the [original validation report](FRESH-INSTALL-VALIDATION.md).
 
 - Definitive MSc selection confirmed: IRP_RESULTS_FINAL including T1.
 - Other result roots retained as historical material.

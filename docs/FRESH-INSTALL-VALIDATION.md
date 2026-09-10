@@ -1,5 +1,9 @@
 # Fresh-install validation — 10 September 2026
 
+**Historical 1.0.0 result:** the defect below is resolved in 1.0.1; see
+[the correction and its validation](OPTIONAL-TRANSPORT-FIX.md). The original
+release and its hashes remain unchanged.
+
 **Result: qualified pass, with one release-blocking defect in the documented
 UAM/car-only setup.** The unchanged supplied JAR completed a small synthetic
 simulation with a configured bus service, and its analytics and dashboard

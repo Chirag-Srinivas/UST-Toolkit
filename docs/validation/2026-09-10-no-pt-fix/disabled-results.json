@@ -1,0 +1,121 @@
+{
+  "iterations": {
+    "0": {
+      "passengers_at_destination": 12,
+      "stuck_events": 0,
+      "uam_pickups": 8,
+      "uam_dropoffs": 8,
+      "event_counts": {
+        "actend": 72,
+        "dvrpTaskStarted": 24,
+        "actstart": 72,
+        "departure": 56,
+        "PersonEntersVehicle": 24,
+        "vehicle enters traffic": 16,
+        "left link": 56,
+        "entered link": 56,
+        "vehicle leaves traffic": 16,
+        "PersonLeavesVehicle": 24,
+        "arrival": 56,
+        "uam vertiport activity wait": 40,
+        "travelled": 32,
+        "passenger waiting": 8,
+        "dvrpTaskEnded": 20,
+        "passenger picked up": 8,
+        "uam pre-boarding wait": 8,
+        "uam post-boarding queue": 8,
+        "UAMTransit": 8,
+        "passenger dropped off": 8
+      }
+    },
+    "1": {
+      "passengers_at_destination": 12,
+      "stuck_events": 0,
+      "uam_pickups": 4,
+      "uam_dropoffs": 4,
+      "event_counts": {
+        "actend": 44,
+        "dvrpTaskStarted": 14,
+        "actstart": 44,
+        "departure": 34,
+        "PersonEntersVehicle": 18,
+        "vehicle enters traffic": 14,
+        "left link": 46,
+        "entered link": 46,
+        "vehicle leaves traffic": 14,
+        "PersonLeavesVehicle": 18,
+        "arrival": 34,
+        "uam vertiport activity wait": 20,
+        "travelled": 16,
+        "passenger waiting": 4,
+        "dvrpTaskEnded": 10,
+        "passenger picked up": 4,
+        "uam pre-boarding wait": 4,
+        "uam post-boarding queue": 4,
+        "UAMTransit": 4,
+        "passenger dropped off": 4
+      }
+    }
+  },
+  "http": {},
+  "checks": {
+    "no_pt_alternatives": true,
+    "no_scheduled_services": true,
+    "no_transit_vehicles": true,
+    "uam_fleet": 4,
+    "jar_sha256": "df139dc1ad847888ab55ffad74960ee022000b7b5afa51d7ae712443a463db4b"
+  },
+  "score_history": [
+    {
+      "iteration": "0",
+      "avg_executed": "39.113596380276995",
+      "avg_worst": "39.113596380276995",
+      "avg_average": "39.113596380276995",
+      "avg_best": "39.113596380276995"
+    },
+    {
+      "iteration": "1",
+      "avg_executed": "39.60023865583669",
+      "avg_worst": "38.76025062490564",
+      "avg_average": "39.35691751805684",
+      "avg_best": "39.95358441120804"
+    }
+  ],
+  "analytics_outcomes": {
+    "definition": "Outcomes use executed MATSim events: a UAM passenger drop-off takes precedence, otherwise PT or car is identified from observed leg modes. Travellers without a recognised executed mode are reported as unobserved.",
+    "eligibleTravellers": 12,
+    "uamCompleted": 4,
+    "carSelected": 8,
+    "ptSelected": 0,
+    "unobserved": 0,
+    "abandonmentRate": 0.6667,
+    "byUrgency": [
+      {
+        "urgency": "high_urgency",
+        "eligible": 7,
+        "uamCompleted": 2,
+        "carSelected": 5,
+        "ptSelected": 0,
+        "unobserved": 0,
+        "abandonmentRate": 0.7143
+      },
+      {
+        "urgency": "low_urgency",
+        "eligible": 5,
+        "uamCompleted": 2,
+        "carSelected": 3,
+        "ptSelected": 0,
+        "unobserved": 0,
+        "abandonmentRate": 0.6
+      }
+    ]
+  },
+  "parquet_rows": {
+    "capacity_series.parquet": 59,
+    "fato_headway_series.parquet": 2,
+    "queue_series.parquet": 59,
+    "trajectory_points.parquet": 98,
+    "traveller_outcomes.parquet": 12
+  },
+  "status": "PASS"
+}

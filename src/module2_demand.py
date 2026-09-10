@@ -4,6 +4,7 @@ import random
 import os
 from uam_geometry import vertiport_geometry
 from xml_writer import write_matsim_population, merge_matsim_population
+from module3_transport import normalise_transport_config
 
 class DemandGenerator:
     def __init__(self):
@@ -12,6 +13,9 @@ class DemandGenerator:
         self.random_seed = getattr(config, "DEMAND_RANDOM_SEED", 4711)
         self.vehicle_type = getattr(config, 'UAM_VEHICLE_TYPE', {})
         self.design_rules = getattr(config, 'VERTIPORT_DESIGN_RULES', {})
+        self.scheduled_transport = bool(
+            normalise_transport_config(config.TRANSPORT_SUPPLY)["services"]
+        )
         self.vertiports_by_id = {
             str(vp["id"]): vp
             for vp in getattr(config, 'VERTIPORTS', [])
@@ -85,6 +89,11 @@ class DemandGenerator:
                     f"Demand event '{event_name}' initial_ground_plan must be "
                     "'car' or 'pt'."
                 )
+            pt_plan_enabled = bool(event.get("pt_plan_enabled", self.scheduled_transport))
+            if not self.scheduled_transport and (pt_plan_enabled or initial_ground_plan == "pt"):
+                raise ValueError(
+                    f"Demand event '{event_name}' requests PT without any scheduled services."
+                )
             initial_plan_rng = random.Random(self.random_seed + idx * 1_000_003)
             initial_uam_indices = set(
                 initial_plan_rng.sample(range(d_pulse), initial_uam_count)
@@ -148,10 +157,7 @@ class DemandGenerator:
                         if local_index in initial_uam_indices
                         else initial_ground_plan
                     ),
-                    "pt_plan_enabled": event.get(
-                        "pt_plan_enabled",
-                        bool(getattr(config, "TRANSPORT_SUPPLY", {}).get("enabled", True)),
-                    ),
+                    "pt_plan_enabled": pt_plan_enabled,
                 })
 
         output_file = f"{output_dir}/population.xml"
