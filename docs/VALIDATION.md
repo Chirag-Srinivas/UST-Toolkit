@@ -1,5 +1,13 @@
 # Local release validation
 
+**Fresh-install follow-up:** the unchanged release bundle completed a small
+synthetic Java/MATSim run and browser checks on 10 September 2026, using a
+fresh Python environment on Windows. The documented empty-public-transport
+path failed. See [the detailed validation report](FRESH-INSTALL-VALIDATION.md)
+for the qualified result, event counts, dependency versions and required fix.
+
+The following records the earlier preparation checks and their original scope.
+
 Validation performed on Windows with Python 3.12 and Node.js 24 in September
 2026. No original research run was rerun or modified.
 

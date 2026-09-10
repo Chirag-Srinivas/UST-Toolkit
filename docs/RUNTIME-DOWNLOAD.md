@@ -4,6 +4,12 @@ For normal use, download **UST-Toolkit-v1.0.0.zip** from the
 [prepared toolkit prerelease](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.0-prepared).
 The repository is private, so sign in with an account that has access.
 
+**Known prerelease issue:** the documented UAM/car-only configuration with
+empty train/bus lists currently fails in Module 3, even though `--check`
+reports success. A small run with a configured bus service passed. See the
+[fresh-install validation report](FRESH-INSTALL-VALIDATION.md); do not add
+fictional transport services to a study merely to bypass this defect.
+
 This bundle includes the exact modified `lib/matsim-uam-5.0.0.jar`, the edited
 Java source and POM, resources/DTD, Python toolkit, compiled dashboard, licences
 and documentation. You do not need to apply the patch or rebuild Java to use

@@ -7,6 +7,10 @@ compiled dashboard. No manual Java edits or rebuild are needed. See
 Sign in with repository access while this repository is private. GitHub's
 automatic source ZIP and Git clones do not include the runtime JAR.
 
+**Validation status:** a fresh-install simulation and dashboard test passed
+with configured public transport. The documented empty train/bus setup fails
+in Module 3 and needs correction. See [test results and limits](docs/FRESH-INSTALL-VALIDATION.md).
+
 UST is a modular toolkit for designing, running, and inspecting Urban Air
 Mobility scenarios with MATSim-UAM. It builds vertiport micro-topology,
 multimodal passenger demand, scheduled surface transport, MATSim configuration,
