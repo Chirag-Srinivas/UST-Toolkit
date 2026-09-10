@@ -1,5 +1,12 @@
 # UAM Scenario Toolkit (UST)
 
+**Download the complete toolkit:** [UST-Toolkit-v1.0.0.zip and checksums](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.0-prepared).
+This prepared prerelease includes the exact modified MATSim-UAM runtime and
+compiled dashboard. No manual Java edits or rebuild are needed. See
+[download, checksum and setup instructions](docs/RUNTIME-DOWNLOAD.md).
+Sign in with repository access while this repository is private. GitHub's
+automatic source ZIP and Git clones do not include the runtime JAR.
+
 UST is a modular toolkit for designing, running, and inspecting Urban Air
 Mobility scenarios with MATSim-UAM. It builds vertiport micro-topology,
 multimodal passenger demand, scheduled surface transport, MATSim configuration,
@@ -438,7 +445,10 @@ One repository supports two versioned downloads:
 The research archive preserves `IRP_RESULTS_FINAL` (including T1) as the
 definitive study. See [study provenance](experiments/msc-study/README.md).
 Large downloads are release assets or external archive links, not Git files.
-Download URLs will be added when the reviewed release is published.
+The [prepared toolkit prerelease](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.0-prepared)
+provides the exact toolkit bundle and checksum. The MSc archive download is
+not hosted here. Public-release review remains documented in
+[release readiness](docs/RELEASE-READINESS.md).
 
 ## Contributing
 

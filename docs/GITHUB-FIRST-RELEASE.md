@@ -6,8 +6,11 @@
 - **Commit:** a recorded snapshot of that folder.
 - **Release:** a named download page linked to a particular code snapshot.
 
-Your GitHub account is `Chirag-Srinivas`. The planned repository is
-`Chirag-Srinivas/UST-Toolkit` (not yet created).
+Your GitHub account is `Chirag-Srinivas`. The private repository is
+`Chirag-Srinivas/UST-Toolkit`. Source and documentation are uploaded, and the
+[prepared toolkit prerelease](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.0-prepared)
+provides the exact runtime bundle and checksum. Follow the
+[download guide](RUNTIME-DOWNLOAD.md) to use it without rebuilding Java.
 
 You will have one repository called `UST-Toolkit`, with two downloads described
 on its release page: a fresh toolkit ZIP and a frozen MSc research ZIP.
@@ -16,11 +19,9 @@ under its published licence.
 
 ## Publishing after the local release review
 
-1. Sign in to GitHub and create a new **private**, empty repository named
-   `UST-Toolkit`. Leave GitHub's README, .gitignore and licence additions off,
-   because this local folder already supplies the prepared files.
-2. Connect the prepared local repository to that repository. GitHub Desktop
-   can handle the upload, or Codex can help after you supply the repository URL.
+1. Completed: create the **private** `UST-Toolkit` repository.
+2. Completed: upload the prepared source and documentation and provide the
+   exact runtime bundle as a prerelease download.
 3. Review the uploaded files and resolve the release checklist. No research
    ZIP, private machine settings or dependency folders belong in Git history.
 4. Make the repository public when the reviewed code and licences are ready.
