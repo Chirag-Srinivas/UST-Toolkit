@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# IDE and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# External inputs and binaries
+data/*
+!data/.gitkeep
+!data/README.md
+lib/*
+!lib/.gitkeep
+!lib/README.md
+!lib/MATSim/
+!lib/MATSim/**
+*.jar
+
+# Generated scenarios and simulation outputs
+scenarios/configs/*
+!scenarios/configs/.gitkeep
+scenarios/networks/*
+!scenarios/networks/.gitkeep
+scenarios/populations/*
+!scenarios/populations/.gitkeep
+scenarios/transport/*
+!scenarios/transport/.gitkeep
+outputs/*
+!outputs/.gitkeep
+!outputs/README.md
+
+# Frontend dependencies and build intermediates
+src/module5/frontend/node_modules/
+src/module5/frontend/.vite/
+src/module5/frontend/*.tsbuildinfo
+src/module5/frontend/vite.config.js
+src/module5/frontend/vite.config.d.ts
+
+# Runtime caches, logs, and local analysis artifacts
+src/tmp/
+src/analysis/
+src/.codex-build/
+*.log
+*.parquet
+*.docx
+*.pdf
+
+# Local archives
+*.zip
+
+# Release bundles stay outside Git history
+release-assets/
+*.partial
+src/module5/frontend/dist-offline/

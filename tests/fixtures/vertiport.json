@@ -1,0 +1,44 @@
+{
+  "id": "1",
+  "name": "Synthetic test vertiport",
+  "x": 0.0,
+  "y": 0.0,
+  "layout": {
+    "security": [
+      20.0,
+      0.0
+    ],
+    "gate": [
+      40.0,
+      0.0
+    ],
+    "stands": {
+      "count": 5,
+      "columns": 2,
+      "origin": [
+        70.0,
+        0.0
+      ],
+      "orientation_deg": 180.0
+    },
+    "apron": [
+      150.0,
+      0.0
+    ],
+    "fatos": [
+      {
+        "id": "F1",
+        "center": [
+          180.0,
+          0.0
+        ]
+      }
+    ],
+    "airborne": [
+      200.0,
+      100.0
+    ]
+  },
+  "t_sep": 600,
+  "t_process": 300
+}

@@ -1,0 +1,158 @@
+{
+  "upstream": "https://github.com/BauhausLuftfahrt/MATSim-UAM",
+  "comparisonTag": "v5.0.0",
+  "comparisonCommit": "d11241567d56c262da8cdd5752828556f9080d68",
+  "snapshotDate": "2026-09-10",
+  "runtimeSha256": "df139dc1ad847888ab55ffad74960ee022000b7b5afa51d7ae712443a463db4b",
+  "runtimeBytes": 89310293,
+  "sourceBinaryRebuildVerified": false,
+  "changesAgainstComparisonTag": [
+    {
+      "path": "pom.xml",
+      "status": "modified",
+      "sourceSha256": "efac38e94c2fc5c52767f034c9e630ce3069209d1315147413e6d51ea07ff45b",
+      "localModifiedAt": "2026-07-10T09:21:50.154738+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/config/UAMConfigGroup.java",
+      "status": "modified",
+      "sourceSha256": "b271210e0798e9f6e91aeb03864f8b6b50d298bbf8c3fc92ad8cc413563525bb",
+      "localModifiedAt": "2026-07-16T23:22:12.711193+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/dispatcher/UAMClosestRangedPreferPooledDispatcher.java",
+      "status": "modified",
+      "sourceSha256": "ba993468e451d94b3d569d89463676c65446584af1abcd730533c61f9a1d1563",
+      "localModifiedAt": "2026-07-16T23:22:17.575267+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/qsim/UAMQSimModule.java",
+      "status": "modified",
+      "sourceSha256": "cd7eb408a9d10c0603a754916908d49e25c3acad3bae8d2d4f3f6a3e145474ca",
+      "localModifiedAt": "2026-07-16T23:22:14.311441+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/replanning/LoggedChangeExpBeta.java",
+      "status": "added",
+      "sourceSha256": "ac33b5b6c4880bbd9796fa47e25aa2157de65488292cf969c998fc24dec5f9a3",
+      "localModifiedAt": "2026-08-15T11:33:58.656413+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/replanning/LoggedPlanStrategy.java",
+      "status": "added",
+      "sourceSha256": "48bb316d31637cdf6a4d227e3457dd0f89a93e17ab0f2b5b34dfc8af0535ce7d",
+      "localModifiedAt": "2026-08-15T11:33:57.691265+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/replanning/LoggedSelectRandom.java",
+      "status": "added",
+      "sourceSha256": "a02e013c4fb6b2822941d797d20ba4eb962f2750d24b3d05453192d9da49e948",
+      "localModifiedAt": "2026-08-15T11:33:59.612179+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/run/RunUAMScenario.java",
+      "status": "modified",
+      "sourceSha256": "2aee301ea275d84fcf47697365af877060c4fa605797a2bc57d8828be150757b",
+      "localModifiedAt": "2026-07-17T17:00:14.200777+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/run/UAMModule.java",
+      "status": "modified",
+      "sourceSha256": "8a3997708936f4f8e32808f2ef6112df9608a5b5b1f6a0cea0b6ca71c72a8056",
+      "localModifiedAt": "2026-08-14T22:09:45.758818+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/scenario/RunCreateUAMRoutedScenario.java",
+      "status": "modified",
+      "sourceSha256": "7eba74014042f43ac4507b5b8e90220b92d705341f402809d2457e0b841b010e",
+      "localModifiedAt": "2026-05-22T17:47:08.377712+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/scenario/utils/ConfigAddUAMParameters.java",
+      "status": "modified",
+      "sourceSha256": "681f0ebed0c5a6a86601a3468551a3c8ca1fb162c041bf4427a4495174bc6839",
+      "localModifiedAt": "2026-05-22T17:47:08.484035+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/schedule/UAMSingleRideAppender.java",
+      "status": "modified",
+      "sourceSha256": "4e5a12d17cbfd15f16a85b0bd4a7fdce50bcfcce3908cfc866de6b0754f44cf6",
+      "localModifiedAt": "2026-07-16T23:22:15.994128+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMPostBoardingQueueEvent.java",
+      "status": "added",
+      "sourceSha256": "39bc63a1ce27552771b41c0b910f32fd4ff228f97ce9a63d12516d2e1afb3d04",
+      "localModifiedAt": "2026-07-17T21:07:47.412365+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMPostBoardingQueueTracker.java",
+      "status": "added",
+      "sourceSha256": "69668c2e088fd028c89662418e44dfb9193621ece754e3f5c9294a6879223b6c",
+      "localModifiedAt": "2026-07-17T21:17:55.013131+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMPreBoardingWaitEvent.java",
+      "status": "added",
+      "sourceSha256": "8e8cb310e2df714aa03506df50231b7141ab80eaa01e8035a1f7f17cd63db110",
+      "localModifiedAt": "2026-08-14T22:08:46.578953+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMPreBoardingWaitTracker.java",
+      "status": "added",
+      "sourceSha256": "f4ec99b4bb12279df205e9df35c5e58ba01d9ba03b7c4e5cc6c33d80e4b8039d",
+      "localModifiedAt": "2026-08-14T22:08:48.499892+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMScoringFunctionFactory.java",
+      "status": "modified",
+      "sourceSha256": "7021dcf33d82a44478c65931e0228f6095aaf261fe0158665dc81730d74a481c",
+      "localModifiedAt": "2026-08-14T22:09:43.386910+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMVertiportActivityWaitEvent.java",
+      "status": "added",
+      "sourceSha256": "b5d88b58b9f955b1b21a9b47eb40e21e9f6fea315e4b1fb9594ab7748b1b1335",
+      "localModifiedAt": "2026-08-14T22:08:50.402040+00:00"
+    },
+    {
+      "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMVertiportActivityWaitTracker.java",
+      "status": "added",
+      "sourceSha256": "d09ec5ef3b72a5b71dd1f4118b45dbe288532412031f1c55ab29bd78898e9d05",
+      "localModifiedAt": "2026-08-14T22:08:52.445574+00:00"
+    }
+  ],
+  "declaredVersions": {
+    "matsim": "2024.0",
+    "java": "21",
+    "uamExtension": "5.0.0"
+  },
+  "currentWorkingFiles": [
+    {
+      "name": "pom.xml",
+      "bytes": 5265,
+      "sha256": "efac38e94c2fc5c52767f034c9e630ce3069209d1315147413e6d51ea07ff45b"
+    },
+    {
+      "name": "matsim-uam-5.0.0.jar",
+      "bytes": 89310293,
+      "sha256": "df139dc1ad847888ab55ffad74960ee022000b7b5afa51d7ae712443a463db4b"
+    }
+  ],
+  "userProvidedComparisonReferences": {
+    "status": "References supplied by the owner; not verified as an unmodified upstream download. Detailed comparison deferred.",
+    "files": [
+      {
+        "name": "pom.xml",
+        "bytes": 5460,
+        "sha256": "defd73dbf99288453e9faafbcab9063d88bef78c668165969e84ca1062213f86"
+      },
+      {
+        "name": "matsim-uam-5.0.0.jar",
+        "bytes": 87966135,
+        "sha256": "453a9298c895cff9eaffcf7f7368ca0874710c9a41b3acacc50261990c563e81"
+      }
+    ],
+    "includedInDistribution": false
+  }
+}

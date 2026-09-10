@@ -1,0 +1,232 @@
+package net.bhl.matsim.uam.dispatcher;
+
+import com.google.inject.Inject;
+
+import net.bhl.matsim.uam.infrastructure.UAMStation;
+import net.bhl.matsim.uam.infrastructure.UAMVehicle;
+import net.bhl.matsim.uam.infrastructure.UAMVehicleType;
+import net.bhl.matsim.uam.passenger.UAMRequest;
+import net.bhl.matsim.uam.schedule.*;
+import org.matsim.api.core.v01.Coord;
+import org.matsim.api.core.v01.Id;
+import org.matsim.api.core.v01.network.Network;
+import org.matsim.contrib.dvrp.fleet.DvrpVehicle;
+import org.matsim.contrib.dvrp.fleet.Fleet;
+import org.matsim.contrib.dvrp.schedule.Schedule;
+import org.matsim.contrib.dvrp.schedule.StayTask;
+import org.matsim.contrib.dvrp.schedule.Task;
+import org.matsim.core.network.NetworkUtils;
+import org.matsim.core.utils.collections.QuadTree;
+
+import java.util.*;
+
+/**
+ * UAM Dispatcher that allows pooled ride between passengers and uses vehicle
+ * types' range restrictions.
+ *
+ * @author RRothfeld (Raoul Rothfeld)
+ */
+public class UAMClosestRangedPreferPooledDispatcher implements UAMDispatcher {
+	final Set<UAMVehicle> enRouteOrAwaitingPickupVehicles = new HashSet<>();
+	@Inject
+	final private UAMSingleRideAppender appender;
+	final private Queue<UAMRequest> pendingRequests = new LinkedList<>();
+	final private Map<UAMVehicleType, QuadTree<UAMVehicle>> availableVehiclesTree = new HashMap<>();
+	final private Map<UAMVehicle, Coord> availableVehicleLocations = new HashMap<>();
+	final boolean reoptimize = true;
+	private final UAMManager uamManager;
+	private final double maxPoolingWaitTime;
+
+	@Inject
+	public UAMClosestRangedPreferPooledDispatcher(UAMSingleRideAppender appender, UAMManager uamManager,
+			Network network, Fleet data, double maxPoolingWaitTime) {
+		this.appender = appender;
+		this.uamManager = uamManager;
+		this.maxPoolingWaitTime = maxPoolingWaitTime;
+
+		double[] bounds = NetworkUtils.getBoundingBox(network.getNodes().values()); // minX, minY, maxX, maxY
+
+		for (DvrpVehicle veh : data.getVehicles().values()) {
+			UAMVehicle vehicle = (UAMVehicle) veh;
+			Id<UAMStation> stationId = vehicle.getInitialStationId();
+			Coord coord = uamManager.getStations().getUAMStations().get(stationId).getLocationLink().getCoord();
+
+			if (!availableVehiclesTree.containsKey(vehicle.getVehicleType())) {
+				availableVehiclesTree.put(vehicle.getVehicleType(),
+						new QuadTree<>(bounds[0], bounds[1], bounds[2], bounds[3]));
+			}
+
+			availableVehiclesTree.get(vehicle.getVehicleType()).put(coord.getX(), coord.getY(), vehicle);
+			availableVehicleLocations.put(vehicle, coord);
+		}
+	}
+
+	@Override
+	public void onNextTimeStep(double now) {
+		appender.update();
+		if (reoptimize)
+			reoptimize(now);
+	}
+
+	@Override
+	public void onRequestSubmitted(UAMRequest request) {
+		pendingRequests.add(request);
+	}
+
+	@Override
+	public void onNextTaskStarted(UAMVehicle vehicle) {
+		Schedule schedule = vehicle.getSchedule();
+		Task task = schedule.getCurrentTask();
+
+		if (task.getTaskType().equals(UAMTaskType.STAY)) {
+			Coord coord = ((StayTask) task).getLink().getCoord();
+			// check if this vehicle has a pickup task next
+			// and then check if it has space
+			// because this vehicle might have be rerouted previously
+			// to another station for pickup
+			int index = schedule.getTasks().indexOf(schedule.getCurrentTask());
+
+			for (int i = index; i < schedule.getTaskCount(); i++) {
+				Task taskN = schedule.getTasks().get(i);
+				if (taskN instanceof UAMPickupTask) {
+					if (((UAMPickupTask) schedule.getTasks().get(i)).getRequests().size() < vehicle.getCapacity()) {
+						// TODO: probably should not be added at all here
+						// as these are enroute vehicles
+						// this.availableVehiclesTree.get(vehicle.getVehicleType()).put(coord.getX(),
+						// coord.getY(),
+						// vehicle);
+						// this.availableVehicleLocations.put(vehicle, coord);
+						return;
+					}
+					break;
+				} else if (i == schedule.getTaskCount() - 1) {
+					// means we do not have any pickup tasks
+					// so we can add this vehicle to the available list
+					// as it is empty
+					this.availableVehiclesTree.get(vehicle.getVehicleType()).put(coord.getX(), coord.getY(), vehicle);
+					this.availableVehicleLocations.put(vehicle, coord);
+					return;
+				}
+			}
+		}
+
+		if (task instanceof UAMPickupTask)
+			this.enRouteOrAwaitingPickupVehicles.remove(vehicle);
+	}
+
+	private void reoptimize(double now) {
+		Queue<UAMRequest> deferredRequests = new LinkedList<>();
+		while (pendingRequests.size() > 0) {
+			UAMRequest request = pendingRequests.poll();
+
+			// Prefer pooling instead of waiting for one's own vehicle
+			if (findEligableEnRouteVehicle(request))
+				continue;
+
+			List<UAMRequest> compatibleRequests = new ArrayList<>();
+			compatibleRequests.add(request);
+			Iterator<UAMRequest> iterator = pendingRequests.iterator();
+			while (iterator.hasNext()) {
+				UAMRequest candidate = iterator.next();
+				if (sameOD(request, candidate)) {
+					compatibleRequests.add(candidate);
+					iterator.remove();
+				}
+			}
+
+			UAMVehicle vehicle = findClosestAvailableVehicle(request);
+			if (vehicle != null) {
+				List<UAMRequest> batch = new ArrayList<>();
+				List<UAMRequest> overflow = new ArrayList<>();
+				int passengers = 0;
+				for (UAMRequest candidate : compatibleRequests) {
+					if (passengers + candidate.getPassengerCount() <= vehicle.getCapacity()) {
+						batch.add(candidate);
+						passengers += candidate.getPassengerCount();
+					} else {
+						overflow.add(candidate);
+					}
+				}
+
+				boolean aircraftFull = passengers >= vehicle.getCapacity();
+				boolean waitExpired = now - request.getSubmissionTime() >= maxPoolingWaitTime;
+				if (!aircraftFull && !waitExpired) {
+					deferredRequests.addAll(compatibleRequests);
+					continue;
+				}
+
+				Coord coord = availableVehicleLocations.get(vehicle);
+				this.availableVehiclesTree.get(vehicle.getVehicleType()).remove(coord.getX(), coord.getY(), vehicle);
+
+				appender.schedule(batch, vehicle, now);
+				if (passengers < vehicle.getCapacity())
+					enRouteOrAwaitingPickupVehicles.add(vehicle);
+				deferredRequests.addAll(overflow);
+			} else {
+				deferredRequests.addAll(compatibleRequests);
+			}
+		}
+
+		this.pendingRequests.addAll(deferredRequests);
+	}
+
+	private boolean sameOD(UAMRequest first, UAMRequest second) {
+		return first.getFromLink().getId().equals(second.getFromLink().getId())
+				&& first.getToLink().getId().equals(second.getToLink().getId());
+	}
+
+	private UAMVehicle findClosestAvailableVehicle(UAMRequest request) {
+		Coord requestCoord = request.getFromLink().getCoord();
+		UAMVehicle vehicle = null;
+		double distance = Double.MAX_VALUE;
+
+		for (UAMVehicleType type : availableVehiclesTree.keySet()) {
+			if (type.getRange() < request.getDistance() || availableVehiclesTree.get(type).size() == 0)
+				continue;
+
+			UAMVehicle candidate = availableVehiclesTree.get(type).getClosest(requestCoord.getX(), requestCoord.getY());
+			double candidateDistance = NetworkUtils.getEuclideanDistance(requestCoord,
+					availableVehicleLocations.get(candidate));
+			if (candidateDistance < distance) {
+				vehicle = candidate;
+				distance = candidateDistance;
+			}
+		}
+		return vehicle;
+	}
+
+	/**
+	 * @param request UAM Request
+	 * @return True if origins and destinations of requests are the same and vehicle
+	 *         capacity constraint is met, otherwise false.
+	 */
+	private boolean findEligableEnRouteVehicle(UAMRequest request) {
+		for (UAMVehicle vehicle : enRouteOrAwaitingPickupVehicles) {
+			Schedule schedule = vehicle.getSchedule();
+			int index = schedule.getTasks().indexOf(schedule.getCurrentTask());
+
+			if (!(schedule.getTasks().get(index) instanceof UAMPickupTask)) {
+				index++;
+				if (index >= schedule.getTaskCount() || !(schedule.getTasks().get(index) instanceof UAMPickupTask))
+					continue;
+			}
+
+			UAMPickupTask pickupTask = (UAMPickupTask) schedule.getTasks().get(index);
+			UAMRequest oldReq = (UAMRequest) pickupTask.getRequests().toArray()[0];
+			if (oldReq.getToLink() == request.getToLink() && oldReq.getFromLink() == request.getFromLink()) {
+				request.setDistance(oldReq.getDistance());
+				pickupTask.getRequests().add(request);
+				UAMDropoffTask dropOff = (UAMDropoffTask) schedule.getTasks().get(index + 2);
+				dropOff.getRequests().add(request);
+
+				if (vehicle.getCapacity() <= dropOff.getRequests().size())
+					this.enRouteOrAwaitingPickupVehicles.remove(vehicle);
+
+				return true;
+			}
+
+		}
+
+		return false;
+	}
+}

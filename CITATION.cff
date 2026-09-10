@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this software and the exact release used in your research."
+type: software
+title: "UAM Scenario Toolkit (UST)"
+authors:
+  - family-names: "Srinivas"
+    given-names: "Chirag"
+version: "1.0.0"
+abstract: "A research toolkit for configuring and analysing MATSim-UAM scenarios, with a separately frozen MSc study archive."
+license: "GPL-3.0-only"

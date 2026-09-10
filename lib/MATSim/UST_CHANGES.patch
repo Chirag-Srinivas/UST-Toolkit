@@ -1,0 +1,1344 @@
+--- a/pom.xml
++++ b/pom.xml
+@@ -1,105 +1,135 @@
+ <project xmlns="http://maven.apache.org/POM/4.0.0"
+-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+-	<modelVersion>4.0.0</modelVersion>
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
+ 
+-	<groupId>net.bhl.matsim</groupId>
+-	<artifactId>matsim-uam</artifactId>
+-	<version>5.0.0</version>
+-	<packaging>jar</packaging>
++    <groupId>net.bhl.matsim</groupId>
++    <artifactId>matsim-uam</artifactId>
++    <version>5.0.0</version>
++    <packaging>jar</packaging>
+ 
+-	<properties>
+-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+-		<matsim.version>2024.0</matsim.version>
+-		<maven.compiler.source>21</maven.compiler.source>
+-		<maven.compiler.target>21</maven.compiler.target>
+-	</properties>
+-	
+-	<distributionManagement>
+-		<repository>
+-			<id>packagecloud-uam</id>
+-			<url>packagecloud+https://packagecloud.io/eth-ivt/uam</url>
+-		</repository>
+-	</distributionManagement>
++    <properties>
++        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++        <matsim.version>2024.0</matsim.version>
++        <maven.compiler.source>21</maven.compiler.source>
++        <maven.compiler.target>21</maven.compiler.target>
++    </properties>
+ 
+-	<build>
+-		<plugins>
+-			<plugin>
+-				<artifactId>maven-assembly-plugin</artifactId>
+-				<configuration>
+-					<archive>
+-						<manifest>
+-							<mainClass>net.bhl.matsim.uam.run.RunUAMScenario</mainClass>
+-						</manifest>
+-					</archive>
+-					<descriptorRefs>
+-						<descriptorRef>jar-with-dependencies</descriptorRef>
+-					</descriptorRefs>
+-				</configuration>
+-				<executions>
+-					<execution>
+-						<id>make-assembly</id>
+-						<phase>package</phase>
+-						<goals>
+-							<goal>single</goal>
+-						</goals>
+-					</execution>
+-				</executions>
+-			</plugin>
+-		</plugins>
+-		<extensions>
+-			<extension>
+-				<groupId>io.packagecloud.maven.wagon</groupId>
+-				<artifactId>maven-packagecloud-wagon</artifactId>
+-				<version>0.0.6</version>
+-			</extension>
+-		</extensions>
+-	</build>
++    <distributionManagement>
++        <repository>
++            <id>packagecloud-uam</id>
++            <url>packagecloud+https://packagecloud.io/eth-ivt/uam</url>
++        </repository>
++    </distributionManagement>
+ 
+-	<repositories>
+-		<repository>
+-			<id>matsim</id>
+-			<name>MATSim Maven repository</name>
+-			<url>https://repo.matsim.org/repository/matsim/</url>
+-		</repository>
+-		<repository>
+-			<id>osgeo</id>
+-			<name>Geotools repository</name>
+-			<url>https://repo.osgeo.org/repository/release/</url>
+-		</repository>
+-	</repositories>
++    <build>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-shade-plugin</artifactId>
++                <version>3.5.2</version>
++                <executions>
++                    <execution>
++                        <phase>package</phase>
++                        <goals>
++                            <goal>shade</goal>
++                        </goals>
++                        <configuration>
++                            <transformers>
++                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
++                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
++                                    <mainClass>net.bhl.matsim.uam.run.RunUAMScenario</mainClass>
++                                </transformer>
++                            </transformers>
++                            <filters>
++                                <filter>
++                                    <artifact>*:*</artifact>
++                                    <excludes>
++                                        <exclude>META-INF/*.SF</exclude>
++                                        <exclude>META-INF/*.DSA</exclude>
++                                        <exclude>META-INF/*.RSA</exclude>
++                                    </excludes>
++                                </filter>
++                            </filters>
++                        </configuration>
++                    </execution>
++                </executions>
++            </plugin>
++        </plugins>
++        
++        <extensions>
++            <extension>
++                <groupId>io.packagecloud.maven.wagon</groupId>
++                <artifactId>maven-packagecloud-wagon</artifactId>
++                <version>0.0.6</version>
++            </extension>
++        </extensions>
++    </build>
+ 
+-	<dependencies>
+-		<dependency>
+-			<groupId>commons-io</groupId>
+-			<artifactId>commons-io</artifactId>
+-			<version>2.7</version>
++    <repositories>
++        <repository>
++            <id>matsim</id>
++            <name>MATSim Maven repository</name>
++            <url>https://repo.matsim.org/repository/matsim/</url>
++        </repository>
++        <repository>
++            <id>osgeo</id>
++            <name>Geotools repository</name>
++            <url>https://repo.osgeo.org/repository/release/</url>
++        </repository>
++    </repositories>
++
++    <dependencies>
++        <dependency>
++            <groupId>commons-io</groupId>
++            <artifactId>commons-io</artifactId>
++            <version>2.7</version>
++        </dependency>
++        <dependency>
++            <groupId>org.matsim</groupId>
++            <artifactId>matsim</artifactId>
++            <version>${matsim.version}</version>
++             <exclusions>
++                <exclusion>
++                    <groupId>javax.media.jai</groupId>
++                    <artifactId>com.springsource.JAI</artifactId>
++                </exclusion>
++                <exclusion>
++                    <groupId>org.geotools</groupId>
++                    <artifactId>gt-coverage</artifactId>
++                </exclusion>
++            </exclusions>
++        </dependency>
++        <dependency>
++            <groupId>com.github.jai-imageio</groupId>
++            <artifactId>jai-imageio-core</artifactId>
++            <version>1.4.0</version>
++        </dependency>
++        <dependency>
++            <groupId>org.matsim.contrib</groupId>
++            <artifactId>dvrp</artifactId>
++            <version>${matsim.version}</version>
++        </dependency>
++        <dependency>
++            <groupId>org.matsim.contrib</groupId>
++            <artifactId>discrete_mode_choice</artifactId>
++            <version>${matsim.version}</version>
++        </dependency>
++        <dependency>
++            <groupId>org.matsim.contrib</groupId>
++            <artifactId>common</artifactId>
++            <version>${matsim.version}</version>
++        </dependency>
++        <dependency>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++            <version>4.13.1</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++    		<groupId>org.matsim.contrib</groupId>
++    		<artifactId>osm</artifactId>
++    		<version>${matsim.version}</version>
+ 		</dependency>
+-		<dependency>
+-			<groupId>org.matsim</groupId>
+-			<artifactId>matsim</artifactId>
+-			<version>${matsim.version}</version>
+-		</dependency>
+-		<dependency>
+-			<groupId>org.matsim.contrib</groupId>
+-			<artifactId>dvrp</artifactId>
+-			<version>${matsim.version}</version>
+-		</dependency>
+-		<dependency>
+-			<groupId>org.matsim.contrib</groupId>
+-			<artifactId>discrete_mode_choice</artifactId>
+-			<version>${matsim.version}</version>
+-		</dependency>
+-		<dependency>
+-			<groupId>org.matsim.contrib</groupId>
+-			<artifactId>common</artifactId>
+-			<version>${matsim.version}</version>
+-		</dependency>
+-		<dependency>
+-			<groupId>junit</groupId>
+-			<artifactId>junit</artifactId>
+-			<version>4.13.1</version>
+-			<scope>test</scope>
+-		</dependency>
+-	</dependencies>
+-</project>
++    </dependencies>
++</project>--- a/src/main/java/net/bhl/matsim/uam/config/UAMConfigGroup.java
++++ b/src/main/java/net/bhl/matsim/uam/config/UAMConfigGroup.java
+@@ -16,6 +16,7 @@
+ import jakarta.validation.constraints.NotEmpty;
+ import jakarta.validation.constraints.NotNull;
+ import jakarta.validation.constraints.Positive;
++import jakarta.validation.constraints.PositiveOrZero;
+ import net.bhl.matsim.uam.router.strategy.UAMStrategy.UAMStrategyType;
+ 
+ /**
+@@ -37,6 +38,7 @@
+ 	static public final String WALK_DISTANCE = "walkDistance";
+ 	static public final String ROUTING_STRATEGY = "routingStrategy";
+ 	static public final String CHARGING = "useCharging";
++	static public final String MAX_POOLING_WAIT_TIME = "maxPoolingWaitTime";
+ 
+ 	static private final String ACCESS_EGRESS_MODES_EXP = "Comma-separated list of possible access/egress modes";
+ 	static private final String INPUT_FILE_EXP = "Path to the input file for UAM infrastructure and vehicles";
+@@ -46,6 +48,7 @@
+ 	static private final String ROUTING_STRATEGY_EXP = "Selects the used routing strategy among " + String.join(", ",
+ 			Arrays.asList(UAMStrategyType.values()).stream().map(String::valueOf).collect(Collectors.toList()));
+ 	static private final String CHARGING_EXP = "yes/no; default is no; if yes the dispatcher with charging will be used; this dispatcher charges the vehicle at the closest avaialble charger at the end of each dropoff task";
++	static private final String MAX_POOLING_WAIT_TIME_EXP = "Maximum time in seconds that the oldest compatible passenger request waits for a pooled aircraft to fill";
+ 	
+ 	@NotEmpty
+ 	private Set<String> accessEgressModes = new HashSet<>();
+@@ -66,6 +69,9 @@
+ 	
+ 	private String useCharging = "no";
+ 
++	@PositiveOrZero
++	private double maxPoolingWaitTime = 300.0;
++
+ 	protected void checkConsistency(Config config) {
+ 		super.checkConsistency(config);
+ 		new BeanValidationConfigConsistencyChecker().checkConsistency(config);
+@@ -82,6 +88,7 @@
+ 		map.put(WALK_DISTANCE, WALK_DISTANCE_EXP);
+ 		map.put(ROUTING_STRATEGY, ROUTING_STRATEGY_EXP);
+ 		map.put(CHARGING, CHARGING_EXP);
++		map.put(MAX_POOLING_WAIT_TIME, MAX_POOLING_WAIT_TIME_EXP);
+ 		return map;
+ 	}
+ 
+@@ -167,4 +174,14 @@
+ 	public void setUseCharging(String useCharging) {
+ 		this.useCharging = useCharging;
+ 	}
++
++	@StringGetter(MAX_POOLING_WAIT_TIME)
++	public double getMaxPoolingWaitTime() {
++		return maxPoolingWaitTime;
++	}
++
++	@StringSetter(MAX_POOLING_WAIT_TIME)
++	public void setMaxPoolingWaitTime(double maxPoolingWaitTime) {
++		this.maxPoolingWaitTime = maxPoolingWaitTime;
++	}
+ }
+--- a/src/main/java/net/bhl/matsim/uam/dispatcher/UAMClosestRangedPreferPooledDispatcher.java
++++ b/src/main/java/net/bhl/matsim/uam/dispatcher/UAMClosestRangedPreferPooledDispatcher.java
+@@ -35,12 +35,14 @@
+ 	final private Map<UAMVehicle, Coord> availableVehicleLocations = new HashMap<>();
+ 	final boolean reoptimize = true;
+ 	private final UAMManager uamManager;
++	private final double maxPoolingWaitTime;
+ 
+ 	@Inject
+ 	public UAMClosestRangedPreferPooledDispatcher(UAMSingleRideAppender appender, UAMManager uamManager,
+-			Network network, Fleet data) {
++			Network network, Fleet data, double maxPoolingWaitTime) {
+ 		this.appender = appender;
+ 		this.uamManager = uamManager;
++		this.maxPoolingWaitTime = maxPoolingWaitTime;
+ 
+ 		double[] bounds = NetworkUtils.getBoundingBox(network.getNodes().values()); // minX, minY, maxX, maxY
+ 
+@@ -121,58 +123,76 @@
+ 			if (findEligableEnRouteVehicle(request))
+ 				continue;
+ 
+-			Coord requestCoord = request.getFromLink().getCoord();
+-
+-			Set<UAMVehicleType> sufficientRangeTypes = new HashSet<>();
+-			for (UAMVehicleType type : availableVehiclesTree.keySet()) {
+-				if (type.getRange() >= request.getDistance())
+-					sufficientRangeTypes.add(type);
+-			}
+-
+-			UAMVehicle vehicle = null;
+-			double distance = Double.MAX_VALUE;
+-			for (UAMVehicleType type : sufficientRangeTypes) {
+-				if (availableVehiclesTree.get(type).size() == 0)
++			List<UAMRequest> compatibleRequests = new ArrayList<>();
++			compatibleRequests.add(request);
++			Iterator<UAMRequest> iterator = pendingRequests.iterator();
++			while (iterator.hasNext()) {
++				UAMRequest candidate = iterator.next();
++				if (sameOD(request, candidate)) {
++					compatibleRequests.add(candidate);
++					iterator.remove();
++				}
++			}
++
++			UAMVehicle vehicle = findClosestAvailableVehicle(request);
++			if (vehicle != null) {
++				List<UAMRequest> batch = new ArrayList<>();
++				List<UAMRequest> overflow = new ArrayList<>();
++				int passengers = 0;
++				for (UAMRequest candidate : compatibleRequests) {
++					if (passengers + candidate.getPassengerCount() <= vehicle.getCapacity()) {
++						batch.add(candidate);
++						passengers += candidate.getPassengerCount();
++					} else {
++						overflow.add(candidate);
++					}
++				}
++
++				boolean aircraftFull = passengers >= vehicle.getCapacity();
++				boolean waitExpired = now - request.getSubmissionTime() >= maxPoolingWaitTime;
++				if (!aircraftFull && !waitExpired) {
++					deferredRequests.addAll(compatibleRequests);
+ 					continue;
+-
+-				// TODO - Ignore vehicles if they are not currently in service
+-				//Simulation will fail if the closest vehicle's schedule (see start time of that vehicle) has
+-				// not yet started, i.e.  the current time (double now) is before that vehicle's start time (same
+-				// applies if current time is past that vehicle's end time).
+-				UAMVehicle closestVehiclesOfType = availableVehiclesTree.get(type).getClosest(requestCoord.getX(),
+-						requestCoord.getY());
+-				double currentDistance = NetworkUtils.getEuclideanDistance(requestCoord,
+-						availableVehicleLocations.get(closestVehiclesOfType));
+-
+-				if (currentDistance < distance) {
+-					vehicle = closestVehiclesOfType;
+-					distance = currentDistance;
+-				}
+-			}
+-
+-			if (vehicle != null) {
++				}
++
+ 				Coord coord = availableVehicleLocations.get(vehicle);
+ 				this.availableVehiclesTree.get(vehicle.getVehicleType()).remove(coord.getX(), coord.getY(), vehicle);
+ 
+-				appender.schedule(request, vehicle, now);
+-				Schedule schedule = vehicle.getSchedule();
+-				int index = schedule.getTasks().indexOf(schedule.getCurrentTask());
+-
+-				for (int i = index; i < schedule.getTaskCount(); i++) {
+-					Task task = schedule.getTasks().get(i);
+-					if (task instanceof UAMPickupTask) {
+-						if (((UAMPickupTask) schedule.getTasks().get(i)).getRequests().size() < vehicle.getCapacity()) {
+-							enRouteOrAwaitingPickupVehicles.add(vehicle);
+-						}
+-						break;
+-					}
+-				}
++				appender.schedule(batch, vehicle, now);
++				if (passengers < vehicle.getCapacity())
++					enRouteOrAwaitingPickupVehicles.add(vehicle);
++				deferredRequests.addAll(overflow);
+ 			} else {
+-				deferredRequests.add(request);
++				deferredRequests.addAll(compatibleRequests);
+ 			}
+ 		}
+ 
+ 		this.pendingRequests.addAll(deferredRequests);
++	}
++
++	private boolean sameOD(UAMRequest first, UAMRequest second) {
++		return first.getFromLink().getId().equals(second.getFromLink().getId())
++				&& first.getToLink().getId().equals(second.getToLink().getId());
++	}
++
++	private UAMVehicle findClosestAvailableVehicle(UAMRequest request) {
++		Coord requestCoord = request.getFromLink().getCoord();
++		UAMVehicle vehicle = null;
++		double distance = Double.MAX_VALUE;
++
++		for (UAMVehicleType type : availableVehiclesTree.keySet()) {
++			if (type.getRange() < request.getDistance() || availableVehiclesTree.get(type).size() == 0)
++				continue;
++
++			UAMVehicle candidate = availableVehiclesTree.get(type).getClosest(requestCoord.getX(), requestCoord.getY());
++			double candidateDistance = NetworkUtils.getEuclideanDistance(requestCoord,
++					availableVehicleLocations.get(candidate));
++			if (candidateDistance < distance) {
++				vehicle = candidate;
++				distance = candidateDistance;
++			}
++		}
++		return vehicle;
+ 	}
+ 
+ 	/**
+--- a/src/main/java/net/bhl/matsim/uam/qsim/UAMQSimModule.java
++++ b/src/main/java/net/bhl/matsim/uam/qsim/UAMQSimModule.java
+@@ -129,12 +129,16 @@
+ 			@DvrpMode(UAMConstants.uam) Fleet data, ChargingHandler chargingHandler, Scenario scenario) {
+ 		List<UAMDispatcher> dispatchers = new ArrayList<>();
+ 
+-		if (((UAMConfigGroup) scenario.getConfig().getModules().get(UAMConfigGroup.GROUP_NAME)).getUseCharging()) {
++		UAMConfigGroup uamConfig = (UAMConfigGroup) scenario.getConfig().getModules()
++				.get(UAMConfigGroup.GROUP_NAME);
++
++		if (uamConfig.getUseCharging()) {
+ 			UAMDispatcher dispatcher = new UAMClosestRangedPooledDWithChargingDispatcher(appenderCharger, uamManager,
+ 					network, data, chargingHandler);
+ 			dispatchers.add(dispatcher);
+ 		} else {
+-			UAMDispatcher dispatcher = new UAMClosestRangedPreferPooledDispatcher(appender, uamManager, network, data);
++			UAMDispatcher dispatcher = new UAMClosestRangedPreferPooledDispatcher(appender, uamManager, network, data,
++					uamConfig.getMaxPoolingWaitTime());
+ 			dispatchers.add(dispatcher);
+ 		}
+ 		return dispatchers;
+--- /dev/null
++++ b/src/main/java/net/bhl/matsim/uam/replanning/LoggedChangeExpBeta.java
+@@ -0,0 +1,24 @@
++package net.bhl.matsim.uam.replanning;
++
++import jakarta.inject.Inject;
++import jakarta.inject.Provider;
++import org.matsim.api.core.v01.population.Person;
++import org.matsim.api.core.v01.population.Plan;
++import org.matsim.core.config.groups.ScoringConfigGroup;
++import org.matsim.core.replanning.PlanStrategy;
++import org.matsim.core.replanning.PlanStrategyImpl;
++import org.matsim.core.replanning.selectors.ExpBetaPlanChanger;
++
++/** ChangeExpBeta selector with person-level assignment logging. */
++public final class LoggedChangeExpBeta implements Provider<PlanStrategy> {
++    @Inject
++    private ScoringConfigGroup scoringConfig;
++
++    @Override
++    public PlanStrategy get() {
++        PlanStrategy delegate = new PlanStrategyImpl.Builder(
++                new ExpBetaPlanChanger<Plan, Person>(scoringConfig.getBrainExpBeta()))
++                .build();
++        return new LoggedPlanStrategy("ChangeExpBeta", delegate);
++    }
++}
+--- /dev/null
++++ b/src/main/java/net/bhl/matsim/uam/replanning/LoggedPlanStrategy.java
+@@ -0,0 +1,39 @@
++package net.bhl.matsim.uam.replanning;
++
++import org.matsim.api.core.v01.population.HasPlansAndId;
++import org.matsim.api.core.v01.population.Person;
++import org.matsim.api.core.v01.population.Plan;
++import org.matsim.core.replanning.PlanStrategy;
++import org.matsim.core.replanning.ReplanningContext;
++
++/** Records the exact strategy assigned to a person, then delegates to MATSim. */
++final class LoggedPlanStrategy implements PlanStrategy {
++    static final String ATTRIBUTE_NAME = "replanningStrategy";
++
++    private final String strategyName;
++    private final PlanStrategy delegate;
++
++    LoggedPlanStrategy(String strategyName, PlanStrategy delegate) {
++        this.strategyName = strategyName;
++        this.delegate = delegate;
++    }
++
++    @Override
++    public void run(HasPlansAndId<Plan, Person> person) {
++        if (!(person instanceof Person matsimPerson)) {
++            throw new IllegalArgumentException("Expected a MATSim Person");
++        }
++        matsimPerson.getAttributes().putAttribute(ATTRIBUTE_NAME, strategyName);
++        delegate.run(person);
++    }
++
++    @Override
++    public void init(ReplanningContext replanningContext) {
++        delegate.init(replanningContext);
++    }
++
++    @Override
++    public void finish() {
++        delegate.finish();
++    }
++}
+--- /dev/null
++++ b/src/main/java/net/bhl/matsim/uam/replanning/LoggedSelectRandom.java
+@@ -0,0 +1,19 @@
++package net.bhl.matsim.uam.replanning;
++
++import jakarta.inject.Provider;
++import org.matsim.api.core.v01.population.Person;
++import org.matsim.api.core.v01.population.Plan;
++import org.matsim.core.replanning.PlanStrategy;
++import org.matsim.core.replanning.PlanStrategyImpl;
++import org.matsim.core.replanning.selectors.RandomPlanSelector;
++
++/** SelectRandom selector with person-level assignment logging. */
++public final class LoggedSelectRandom implements Provider<PlanStrategy> {
++    @Override
++    public PlanStrategy get() {
++        PlanStrategy delegate = new PlanStrategyImpl.Builder(
++                new RandomPlanSelector<Plan, Person>())
++                .build();
++        return new LoggedPlanStrategy("SelectRandom", delegate);
++    }
++}
+--- a/src/main/java/net/bhl/matsim/uam/run/RunUAMScenario.java
++++ b/src/main/java/net/bhl/matsim/uam/run/RunUAMScenario.java
+@@ -12,8 +12,6 @@
+ import org.matsim.core.config.Config;
+ import org.matsim.core.config.ConfigUtils;
+ import org.matsim.core.config.groups.QSimConfigGroup.StarttimeInterpretation;
+-import org.matsim.core.config.groups.ScoringConfigGroup.ActivityParams;
+-import org.matsim.core.config.groups.ScoringConfigGroup.ModeParams;
+ import org.matsim.core.controler.Controler;
+ import org.matsim.core.scenario.ScenarioUtils;
+ 
+@@ -98,12 +96,6 @@
+ 		controler.getConfig().qsim().setStartTime(0.0);
+ 
+ 		DvrpConfigGroup.get(config).networkModes = ImmutableSet.of("uam");
+-		config.scoring().addModeParams(new ModeParams("access_uam_car"));
+-		config.scoring().addModeParams(new ModeParams("egress_uam_car"));
+-		config.scoring().addModeParams(new ModeParams("uam"));
+-		config.scoring()
+-				.addActivityParams(new ActivityParams("uam_interaction").setScoringThisActivityAtAll(false));
+-
+ 		config.controller().setWriteEventsInterval(1);
+ 		
+ 		return controler;
+--- a/src/main/java/net/bhl/matsim/uam/run/UAMModule.java
++++ b/src/main/java/net/bhl/matsim/uam/run/UAMModule.java
+@@ -43,7 +43,10 @@
+ import net.bhl.matsim.uam.listeners.UAMShutdownListener;
+ import net.bhl.matsim.uam.qsim.UAMQSimModule;
+ import net.bhl.matsim.uam.router.UAMRoutingModuleProvider;
++import net.bhl.matsim.uam.scoring.UAMPostBoardingQueueTracker;
++import net.bhl.matsim.uam.scoring.UAMPreBoardingWaitTracker;
+ import net.bhl.matsim.uam.scoring.UAMScoringFunctionFactory;
++import net.bhl.matsim.uam.scoring.UAMVertiportActivityWaitTracker;
+ 
+ /**
+  * A MATSim Abstract Module for the classes used by the UAM simulation.
+@@ -68,6 +71,12 @@
+ 
+ 		// bining our own scoring function factory
+ 		bind(ScoringFunctionFactory.class).to(UAMScoringFunctionFactory.class).asEagerSingleton();
++		bind(UAMPreBoardingWaitTracker.class).asEagerSingleton();
++		addEventHandlerBinding().to(UAMPreBoardingWaitTracker.class);
++		bind(UAMPostBoardingQueueTracker.class).asEagerSingleton();
++		addEventHandlerBinding().to(UAMPostBoardingQueueTracker.class);
++		bind(UAMVertiportActivityWaitTracker.class).asEagerSingleton();
++		addEventHandlerBinding().to(UAMVertiportActivityWaitTracker.class);
+ 
+ 		// adding UAMDemand as singleton
+ 		bind(UAMDemand.class).asEagerSingleton();
+--- a/src/main/java/net/bhl/matsim/uam/scenario/RunCreateUAMRoutedScenario.java
++++ b/src/main/java/net/bhl/matsim/uam/scenario/RunCreateUAMRoutedScenario.java
+@@ -119,7 +119,8 @@
+ 				String vehicleInput) {
+ 		// READ REQUIRED INPUT FILES
+ 		Config config = ConfigUtils.loadConfig(configInput);
+-		Scenario scenario = ScenarioUtils.loadScenario(config);
++		Config configForCreatingScenario = ConfigUtils.loadConfig(configInput);
++		Scenario scenario = ScenarioUtils.loadScenario(configForCreatingScenario);
+ 		Network network = scenario.getNetwork();
+ 		List<String[]> stations = CSVReaders.readCSV(stationInput);
+ 
+@@ -499,7 +500,9 @@
+ 				i = 10;
+ 				String station_preflighttime = station[i++];
+ 				String station_postflighttime = station[i++];
+-				String station_defaultwaittime = station[i];
++				String station_defaultwaittime = station[i++];
++				String station_numberOfChargers = station[i++];
++				String station_chargingSpeed = station[i];
+ 
+ 				atts.add(new Tuple<>("id", station_id));
+ 				atts.add(new Tuple<>("name", station_name));
+@@ -509,6 +512,8 @@
+ 				atts.add(new Tuple<>("link",
+ 						name_uam_station_link + name_uam_nodes + station_id + name_uam_station_ground_access + "-"
+ 								+ name_uam_nodes + station_id + name_uam_station_flight_access));
++				atts.add(new Tuple<>("numberOfChargers", station_numberOfChargers));
++				atts.add(new Tuple<>("chargingSpeed", station_chargingSpeed));
+ 
+ 				writeStartTag("station", atts, true);
+ 			}
+@@ -526,7 +531,10 @@
+ 				String verticalspeed = vehicle[i++];
+ 				String boardingtime = vehicle[i++];
+ 				String deboardingtime = vehicle[i++];
+-				String turnaroundtime = vehicle[i];
++				String turnaroundtime = vehicle[i++];
++				String maximumCharge = vehicle[i++];
++				String energyConsumptionHorizontal = vehicle[i++];
++				String energyConsumptionVertical = vehicle[i];
+ 
+ 				List<Tuple<String, String>> atts = new ArrayList<>();
+ 				atts.add(new Tuple<>("id", type));
+@@ -537,6 +545,10 @@
+ 				atts.add(new Tuple<>("boardingtime", boardingtime));
+ 				atts.add(new Tuple<>("deboardingtime", deboardingtime));
+ 				atts.add(new Tuple<>("turnaroundtime", turnaroundtime));
++				atts.add(new Tuple<>("maximumCharge", maximumCharge));
++				atts.add(new Tuple<>("energyConsumptionHorizontal", energyConsumptionHorizontal));
++				atts.add(new Tuple<>("energyConsumptionVertical", energyConsumptionVertical));
++
+ 				writeStartTag("vehicleType", atts, true);
+ 			}
+ 		}
+--- a/src/main/java/net/bhl/matsim/uam/scenario/utils/ConfigAddUAMParameters.java
++++ b/src/main/java/net/bhl/matsim/uam/scenario/utils/ConfigAddUAMParameters.java
+@@ -45,7 +45,7 @@
+ 		//config.getModules().get(UAMConstants.uam).addParam("ptSimulation", String.valueOf(ptSimulation));
+ 
+ 		// If PT simulation is desired (true), PT may not be listed under teleportedModeParameters, else it must be
+-		ConfigGroup planscalcroute = config.getModules().get("planscalcroute");
++		ConfigGroup planscalcroute = config.getModules().get("routing");
+ 		Collection<? extends ConfigGroup> teleportedModeParameters = planscalcroute.getParameterSets("teleportedModeParameters");
+ 
+ 		boolean ptParamsExistent = false;
+@@ -72,11 +72,11 @@
+ 			planscalcroute.addParameterSet(modeRoutingParams);
+ 		}
+ 
+-		// UAM planCalcScore activities
+-		ConfigGroup uamInteractionParam = config.getModules().get("planCalcScore").createParameterSet("activityParams");
++		// UAM scoring activities
++		ConfigGroup uamInteractionParam = config.getModules().get("scoring").createParameterSet("activityParams");
+ 		uamInteractionParam.addParam("activityType", UAMConstants.interaction);
+ 		uamInteractionParam.addParam("scoringThisActivityAtAll", "false");
+-		config.getModules().get("planCalcScore").addParameterSet(uamInteractionParam);
++		config.getModules().get("scoring").addParameterSet(uamInteractionParam);
+ 
+ 		String mainMode = config.getModules().get("qsim").getParams().get("mainMode");
+ 		config.getModules().get("qsim").addParam("mainMode",
+@@ -84,19 +84,19 @@
+ 						+ "," + UAMConstants.access + TransportMode.car
+ 						+ "," + UAMConstants.egress + TransportMode.car);
+ 
+-		// UAM planCalcScore modes
++		// UAM scoring modes
+ 		String[] modeScores = {UAMConstants.uam,
+ 				UAMConstants.access + TransportMode.walk, UAMConstants.egress + TransportMode.walk,
+ 				UAMConstants.access + TransportMode.car, UAMConstants.egress + TransportMode.car,
+ 				UAMConstants.access + TransportMode.bike, UAMConstants.egress + TransportMode.bike};
+ 		for (String modeScore : modeScores) {
+-			ConfigGroup modeParam = config.getModules().get("planCalcScore").createParameterSet("modeParams");
++			ConfigGroup modeParam = config.getModules().get("scoring").createParameterSet("modeParams");
+ 			modeParam.addParam("mode", modeScore);
+ 			modeParam.addParam("constant", "0.0");
+ 			modeParam.addParam("marginalUtilityOfDistance_util_m", "0.0");
+ 			modeParam.addParam("marginalUtilityOfTraveling_util_hr", "0.0");
+ 			modeParam.addParam("monetaryDistanceRate", "0.0");
+-			config.getModules().get("planCalcScore").addParameterSet(modeParam);
++			config.getModules().get("scoring").addParameterSet(modeParam);
+ 		}
+ 	}
+ }
+--- a/src/main/java/net/bhl/matsim/uam/schedule/UAMSingleRideAppender.java
++++ b/src/main/java/net/bhl/matsim/uam/schedule/UAMSingleRideAppender.java
+@@ -1,6 +1,8 @@
+ package net.bhl.matsim.uam.schedule;
+ 
+ import java.util.Collections;
++import java.util.ArrayList;
++import java.util.Collection;
+ import java.util.LinkedList;
+ import java.util.List;
+ import java.util.concurrent.ExecutionException;
+@@ -51,7 +53,18 @@
+ 	 *                AppendTask is added to the AppendTask list.
+ 	 */
+ 	public void schedule(UAMRequest request, UAMVehicle vehicle, double now) {
+-		tasks.add(new AppendTask(request, vehicle, now)); // adds the task to the tasks list
++		schedule(Collections.singletonList(request), vehicle, now);
++	}
++
++	/**
++	 * Schedules several compatible requests on one aircraft. All requests must
++	 * share the same origin and destination, and their combined passenger count
++	 * must not exceed the aircraft capacity.
++	 */
++	public void schedule(Collection<UAMRequest> requests, UAMVehicle vehicle, double now) {
++		if (requests.isEmpty())
++			throw new IllegalArgumentException("Cannot schedule an empty UAM request batch");
++		tasks.add(new AppendTask(requests, vehicle, now));
+ 	}
+ 
+ 	// There is a difference between an AppendTask and a Task that implements the
+@@ -61,9 +74,19 @@
+ 	// (Tasks that implements the Task interface) and add them in order to the
+ 	// vehicle schedule
+ 	public void schedule(AppendTask task) throws ExecutionException, InterruptedException {
+-		UAMRequest request = task.request;
++		List<UAMRequest> requests = task.requests;
++		UAMRequest request = requests.get(0);
+ 		UAMVehicle vehicle = task.vehicle;
+ 		double now = task.time;
++
++		int passengerCount = requests.stream().mapToInt(UAMRequest::getPassengerCount).sum();
++		if (passengerCount > vehicle.getCapacity())
++			throw new IllegalArgumentException("UAM request batch exceeds aircraft capacity");
++		for (UAMRequest pooledRequest : requests) {
++			if (!pooledRequest.getFromLink().getId().equals(request.getFromLink().getId())
++					|| !pooledRequest.getToLink().getId().equals(request.getToLink().getId()))
++				throw new IllegalArgumentException("Pooled UAM requests must share origin and destination");
++		}
+ 		Schedule schedule = vehicle.getSchedule();
+ 
+ 		StayTask stayTask = (StayTask) Schedules.getLastTask(schedule);
+@@ -79,14 +102,15 @@
+ 				startTime, pickupPath, travelTime);
+ 		DriveTask pickupFlyTask = new DefaultDriveTask(UAMTaskType.FLY, pickupPathWithTravelData);
+ 
+-		double pickUpTaskStartTime = request.getEarliestStartTime();
++		double pickUpTaskStartTime = Math.max(now,
++				requests.stream().mapToDouble(UAMRequest::getEarliestStartTime).max().orElse(now));
+ 		// For the case when the Aircraft is not already at the correct station:
+ 		if (requiresPickupFlight)
+ 			pickUpTaskStartTime = Math.max(pickUpTaskStartTime, pickupPathWithTravelData.getArrivalTime());
+ 
+ 		double flyTaskStartTime = pickUpTaskStartTime + vehicle.getBoardingTime();
+ 		UAMPickupTask pickupTask = new UAMPickupTask(pickUpTaskStartTime, flyTaskStartTime, request.getFromLink(),
+-				vehicle.getBoardingTime(), Collections.singletonList(request));
++				vehicle.getBoardingTime(), requests);
+ 
+ 		Path dropoffPath = uamPathCalculator.calcLeastCostPath(request.getFromLink().getToNode(),
+ 				request.getToLink().getFromNode(), flyTaskStartTime, null, null);
+@@ -98,7 +122,7 @@
+ 		double dropOffStartTime = flyTaskStartTime + dropoffPathWithTravelData.getTravelTime();
+ 		double tatStartTime = dropOffStartTime + vehicle.getDeboardingTime();
+ 		UAMDropoffTask dropoffTask = new UAMDropoffTask(dropOffStartTime, tatStartTime, request.getToLink(),
+-				vehicle.getDeboardingTime(), Collections.singletonList(request));
++				vehicle.getDeboardingTime(), requests);
+ 
+ 		double tatEndTime = tatStartTime + vehicle.getTurnAroundTime();
+ 		StayTask turnAroundTask = new DefaultStayTask(UAMTaskType.TURNAROUND, tatStartTime, tatEndTime, request.getToLink());
+@@ -140,13 +164,13 @@
+ 	}
+ 
+ 	private class AppendTask {
+-		final public UAMRequest request;
++		final public List<UAMRequest> requests;
+ 		final public UAMVehicle vehicle;
+ 
+ 		final public double time;
+ 
+-		public AppendTask(UAMRequest request, UAMVehicle vehicle, double time) {
+-			this.request = request;
++		public AppendTask(Collection<UAMRequest> requests, UAMVehicle vehicle, double time) {
++			this.requests = new ArrayList<>(requests);
+ 			this.vehicle = vehicle;
+ 			this.time = time;
+ 		}
+--- /dev/null
++++ b/src/main/java/net/bhl/matsim/uam/scoring/UAMPostBoardingQueueEvent.java
+@@ -0,0 +1,55 @@
++package net.bhl.matsim.uam.scoring;
++
++import java.util.Map;
++
++import org.matsim.api.core.v01.Id;
++import org.matsim.api.core.v01.events.Event;
++import org.matsim.api.core.v01.events.HasPersonId;
++import org.matsim.api.core.v01.population.Person;
++import org.matsim.vehicles.Vehicle;
++
++/**
++ * Marks the end of a passenger's post-boarding, pre-airborne queue.
++ */
++public final class UAMPostBoardingQueueEvent extends Event implements HasPersonId {
++	public static final String EVENT_TYPE = "uam post-boarding queue";
++	public static final String ATTRIBUTE_DURATION = "duration";
++
++	private final Id<Person> personId;
++	private final Id<Vehicle> vehicleId;
++	private final double duration;
++
++	public UAMPostBoardingQueueEvent(
++			double time,
++			Id<Person> personId,
++			Id<Vehicle> vehicleId,
++			double duration) {
++		super(time);
++		this.personId = personId;
++		this.vehicleId = vehicleId;
++		this.duration = duration;
++	}
++
++	@Override
++	public String getEventType() {
++		return EVENT_TYPE;
++	}
++
++	@Override
++	public Id<Person> getPersonId() {
++		return personId;
++	}
++
++	public double getDuration() {
++		return duration;
++	}
++
++	@Override
++	public Map<String, String> getAttributes() {
++		Map<String, String> attributes = super.getAttributes();
++		attributes.put("person", personId.toString());
++		attributes.put("vehicle", vehicleId.toString());
++		attributes.put(ATTRIBUTE_DURATION, Double.toString(duration));
++		return attributes;
++	}
++}
+--- /dev/null
++++ b/src/main/java/net/bhl/matsim/uam/scoring/UAMPostBoardingQueueTracker.java
+@@ -0,0 +1,96 @@
++package net.bhl.matsim.uam.scoring;
++
++import java.util.LinkedHashMap;
++import java.util.Map;
++
++import org.matsim.api.core.v01.Id;
++import org.matsim.api.core.v01.events.LinkEnterEvent;
++import org.matsim.api.core.v01.events.PersonEntersVehicleEvent;
++import org.matsim.api.core.v01.events.PersonLeavesVehicleEvent;
++import org.matsim.api.core.v01.events.handler.LinkEnterEventHandler;
++import org.matsim.api.core.v01.events.handler.PersonEntersVehicleEventHandler;
++import org.matsim.api.core.v01.events.handler.PersonLeavesVehicleEventHandler;
++import org.matsim.api.core.v01.population.Person;
++import org.matsim.core.api.experimental.events.EventsManager;
++import org.matsim.vehicles.Vehicle;
++
++import com.google.inject.Inject;
++import com.google.inject.Singleton;
++
++import net.bhl.matsim.uam.run.UAMConstants;
++
++/**
++ * Measures passenger time from boarding until the aircraft starts takeoff.
++ */
++@Singleton
++public final class UAMPostBoardingQueueTracker implements
++		PersonEntersVehicleEventHandler,
++		PersonLeavesVehicleEventHandler,
++		LinkEnterEventHandler {
++
++	private static final String TAKEOFF_LINK_PREFIX = "link_fato_takeoff_";
++
++	private final EventsManager eventsManager;
++	private final Map<Id<Vehicle>, Map<Id<Person>, Double>> boardedPassengers =
++			new LinkedHashMap<>();
++
++	@Inject
++	public UAMPostBoardingQueueTracker(EventsManager eventsManager) {
++		this.eventsManager = eventsManager;
++	}
++
++	@Override
++	public void handleEvent(PersonEntersVehicleEvent event) {
++		if (!isUAMVehicle(event.getVehicleId())
++				|| event.getPersonId().toString().equals(event.getVehicleId().toString())) {
++			return;
++		}
++
++		boardedPassengers
++				.computeIfAbsent(event.getVehicleId(), ignored -> new LinkedHashMap<>())
++				.put(event.getPersonId(), event.getTime());
++	}
++
++	@Override
++	public void handleEvent(PersonLeavesVehicleEvent event) {
++		Map<Id<Person>, Double> passengers = boardedPassengers.get(event.getVehicleId());
++		if (passengers == null) {
++			return;
++		}
++
++		passengers.remove(event.getPersonId());
++		if (passengers.isEmpty()) {
++			boardedPassengers.remove(event.getVehicleId());
++		}
++	}
++
++	@Override
++	public void handleEvent(LinkEnterEvent event) {
++		if (!event.getLinkId().toString().startsWith(TAKEOFF_LINK_PREFIX)) {
++			return;
++		}
++
++		Map<Id<Person>, Double> passengers = boardedPassengers.remove(event.getVehicleId());
++		if (passengers == null) {
++			return;
++		}
++
++		for (Map.Entry<Id<Person>, Double> passenger : passengers.entrySet()) {
++			double duration = Math.max(0.0, event.getTime() - passenger.getValue());
++			eventsManager.processEvent(new UAMPostBoardingQueueEvent(
++					event.getTime(),
++					passenger.getKey(),
++					event.getVehicleId(),
++					duration));
++		}
++	}
++
++	@Override
++	public void reset(int iteration) {
++		boardedPassengers.clear();
++	}
++
++	private static boolean isUAMVehicle(Id<Vehicle> vehicleId) {
++		return vehicleId.toString().startsWith(UAMConstants.vehicle);
++	}
++}
+--- /dev/null
++++ b/src/main/java/net/bhl/matsim/uam/scoring/UAMPreBoardingWaitEvent.java
+@@ -0,0 +1,55 @@
++package net.bhl.matsim.uam.scoring;
++
++import java.util.Map;
++
++import org.matsim.api.core.v01.Id;
++import org.matsim.api.core.v01.events.Event;
++import org.matsim.api.core.v01.events.HasPersonId;
++import org.matsim.api.core.v01.population.Person;
++import org.matsim.vehicles.Vehicle;
++
++/**
++ * Reports realized passenger waiting from UAM-leg departure until boarding.
++ */
++public final class UAMPreBoardingWaitEvent extends Event implements HasPersonId {
++	public static final String EVENT_TYPE = "uam pre-boarding wait";
++	public static final String ATTRIBUTE_DURATION = "duration";
++
++	private final Id<Person> personId;
++	private final Id<Vehicle> vehicleId;
++	private final double duration;
++
++	public UAMPreBoardingWaitEvent(
++			double time,
++			Id<Person> personId,
++			Id<Vehicle> vehicleId,
++			double duration) {
++		super(time);
++		this.personId = personId;
++		this.vehicleId = vehicleId;
++		this.duration = duration;
++	}
++
++	@Override
++	public String getEventType() {
++		return EVENT_TYPE;
++	}
++
++	@Override
++	public Id<Person> getPersonId() {
++		return personId;
++	}
++
++	public double getDuration() {
++		return duration;
++	}
++
++	@Override
++	public Map<String, String> getAttributes() {
++		Map<String, String> attributes = super.getAttributes();
++		attributes.put("person", personId.toString());
++		attributes.put("vehicle", vehicleId.toString());
++		attributes.put(ATTRIBUTE_DURATION, Double.toString(duration));
++		return attributes;
++	}
++}
+--- /dev/null
++++ b/src/main/java/net/bhl/matsim/uam/scoring/UAMPreBoardingWaitTracker.java
+@@ -0,0 +1,80 @@
++package net.bhl.matsim.uam.scoring;
++
++import java.util.LinkedHashMap;
++import java.util.Map;
++
++import org.matsim.api.core.v01.Id;
++import org.matsim.api.core.v01.events.PersonArrivalEvent;
++import org.matsim.api.core.v01.events.PersonDepartureEvent;
++import org.matsim.api.core.v01.events.PersonEntersVehicleEvent;
++import org.matsim.api.core.v01.events.handler.PersonArrivalEventHandler;
++import org.matsim.api.core.v01.events.handler.PersonDepartureEventHandler;
++import org.matsim.api.core.v01.events.handler.PersonEntersVehicleEventHandler;
++import org.matsim.api.core.v01.population.Person;
++import org.matsim.core.api.experimental.events.EventsManager;
++import org.matsim.vehicles.Vehicle;
++
++import com.google.inject.Inject;
++import com.google.inject.Singleton;
++
++import net.bhl.matsim.uam.run.UAMConstants;
++
++/**
++ * Measures each passenger's realized wait from UAM-leg departure to boarding.
++ */
++@Singleton
++public final class UAMPreBoardingWaitTracker implements
++		PersonDepartureEventHandler,
++		PersonEntersVehicleEventHandler,
++		PersonArrivalEventHandler {
++
++	private final EventsManager eventsManager;
++	private final Map<Id<Person>, Double> departures = new LinkedHashMap<>();
++
++	@Inject
++	public UAMPreBoardingWaitTracker(EventsManager eventsManager) {
++		this.eventsManager = eventsManager;
++	}
++
++	@Override
++	public void handleEvent(PersonDepartureEvent event) {
++		if (UAMConstants.uam.equals(event.getLegMode())) {
++			departures.put(event.getPersonId(), event.getTime());
++		}
++	}
++
++	@Override
++	public void handleEvent(PersonEntersVehicleEvent event) {
++		if (!isUAMVehicle(event.getVehicleId())) {
++			return;
++		}
++
++		Double departureTime = departures.remove(event.getPersonId());
++		if (departureTime == null) {
++			return;
++		}
++
++		double duration = Math.max(0.0, event.getTime() - departureTime);
++		eventsManager.processEvent(new UAMPreBoardingWaitEvent(
++				event.getTime(),
++				event.getPersonId(),
++				event.getVehicleId(),
++				duration));
++	}
++
++	@Override
++	public void handleEvent(PersonArrivalEvent event) {
++		if (UAMConstants.uam.equals(event.getLegMode())) {
++			departures.remove(event.getPersonId());
++		}
++	}
++
++	@Override
++	public void reset(int iteration) {
++		departures.clear();
++	}
++
++	private static boolean isUAMVehicle(Id<Vehicle> vehicleId) {
++		return vehicleId.toString().startsWith(UAMConstants.vehicle);
++	}
++}
+--- a/src/main/java/net/bhl/matsim/uam/scoring/UAMScoringFunctionFactory.java
++++ b/src/main/java/net/bhl/matsim/uam/scoring/UAMScoringFunctionFactory.java
+@@ -1,31 +1,107 @@
+ package net.bhl.matsim.uam.scoring;
+ 
+ import org.matsim.api.core.v01.Scenario;
++import org.matsim.api.core.v01.events.Event;
+ import org.matsim.api.core.v01.population.Person;
+ import org.matsim.core.scoring.ScoringFunction;
+ import org.matsim.core.scoring.ScoringFunctionFactory;
+ import org.matsim.core.scoring.SumScoringFunction;
+ import org.matsim.core.scoring.functions.CharyparNagelScoringFunctionFactory;
++import org.matsim.core.scoring.functions.ModeUtilityParameters;
++import org.matsim.core.scoring.functions.ScoringParameters;
++import org.matsim.core.scoring.functions.ScoringParametersForPerson;
++import org.matsim.core.scoring.functions.SubpopulationScoringParameters;
+ 
+ import com.google.inject.Inject;
+ import com.google.inject.Singleton;
+ 
++import net.bhl.matsim.uam.run.UAMConstants;
++
+ /**
+- * Create new scoring functions for UAM mode.
+- *
+- * @author balacmi (Milos Balac), RRothfeld (Raoul Rothfeld)
++ * Creates the standard MATSim scorer with UAM-specific processing and waiting
++ * components. UAM in-vehicle time remains in the standard mode scorer.
+  */
+ @Singleton
+ public class UAMScoringFunctionFactory implements ScoringFunctionFactory {
+-	final private ScoringFunctionFactory standardFactory;
++	private final ScoringFunctionFactory standardFactory;
++	private final ScoringParametersForPerson scoringParameters;
+ 
+ 	@Inject
+ 	public UAMScoringFunctionFactory(Scenario scenario) {
+ 		standardFactory = new CharyparNagelScoringFunctionFactory(scenario);
++		scoringParameters = new SubpopulationScoringParameters(scenario);
+ 	}
+ 
+ 	@Override
+ 	public ScoringFunction createNewScoringFunction(Person person) {
+-		return (SumScoringFunction) standardFactory.createNewScoringFunction(person);
++		SumScoringFunction scoringFunction =
++				(SumScoringFunction) standardFactory.createNewScoringFunction(person);
++		ScoringParameters parameters = scoringParameters.getScoringParameters(person);
++
++		ModeUtilityParameters uamModeParameters = parameters.modeParams.get(UAMConstants.uam);
++		if (uamModeParameters == null) {
++			throw new IllegalStateException("Missing scoring parameters for UAM mode.");
++		}
++
++		scoringFunction.addScoringFunction(new UAMWaitingScoring(
++				parameters.marginalUtilityOfWaiting_s,
++				uamModeParameters.marginalUtilityOfTraveling_s));
++
++		return scoringFunction;
+ 	}
+-}+
++	/**
++	 * Scores realized vertiport processing directly with waiting utility, and
++	 * converts the pre-boarding and post-boarding portions already included in
++	 * the UAM leg from travel utility to waiting utility.
++	 */
++	private static final class UAMWaitingScoring
++			implements SumScoringFunction.ArbitraryEventScoring {
++
++		private final double marginalUtilityOfWaiting_s;
++		private final double legWaitingAdjustment_s;
++		private double score;
++
++		private UAMWaitingScoring(
++				double marginalUtilityOfWaiting_s,
++				double marginalUtilityOfUAMTravel_s) {
++			this.marginalUtilityOfWaiting_s = marginalUtilityOfWaiting_s;
++			legWaitingAdjustment_s =
++					marginalUtilityOfWaiting_s - marginalUtilityOfUAMTravel_s;
++		}
++
++		@Override
++		public void handleEvent(Event event) {
++			if (event instanceof UAMVertiportActivityWaitEvent waitEvent) {
++				score += waitEvent.getDuration() * marginalUtilityOfWaiting_s;
++			} else if (event instanceof UAMPreBoardingWaitEvent waitEvent) {
++				score += waitEvent.getDuration() * legWaitingAdjustment_s;
++			} else if (event instanceof UAMPostBoardingQueueEvent queueEvent) {
++				score += queueEvent.getDuration() * legWaitingAdjustment_s;
++			} else if (UAMVertiportActivityWaitEvent.EVENT_TYPE.equals(event.getEventType())) {
++				score += duration(event, UAMVertiportActivityWaitEvent.ATTRIBUTE_DURATION)
++						* marginalUtilityOfWaiting_s;
++			} else if (UAMPreBoardingWaitEvent.EVENT_TYPE.equals(event.getEventType())) {
++				score += duration(event, UAMPreBoardingWaitEvent.ATTRIBUTE_DURATION)
++						* legWaitingAdjustment_s;
++			} else if (UAMPostBoardingQueueEvent.EVENT_TYPE.equals(event.getEventType())) {
++				score += duration(event, UAMPostBoardingQueueEvent.ATTRIBUTE_DURATION)
++						* legWaitingAdjustment_s;
++			}
++		}
++
++		private static double duration(Event event, String attributeName) {
++			String value = event.getAttributes().get(attributeName);
++			return value == null ? 0.0 : Math.max(0.0, Double.parseDouble(value));
++		}
++
++		@Override
++		public void finish() {
++		}
++
++		@Override
++		public double getScore() {
++			return score;
++		}
++	}
++}
+--- /dev/null
++++ b/src/main/java/net/bhl/matsim/uam/scoring/UAMVertiportActivityWaitEvent.java
+@@ -0,0 +1,59 @@
++package net.bhl.matsim.uam.scoring;
++
++import java.util.Map;
++
++import org.matsim.api.core.v01.Id;
++import org.matsim.api.core.v01.events.Event;
++import org.matsim.api.core.v01.events.HasPersonId;
++import org.matsim.api.core.v01.population.Person;
++
++/**
++ * Reports realized time in a processing or waiting activity at a vertiport.
++ */
++public final class UAMVertiportActivityWaitEvent extends Event implements HasPersonId {
++	public static final String EVENT_TYPE = "uam vertiport activity wait";
++	public static final String ATTRIBUTE_ACTIVITY_TYPE = "activityType";
++	public static final String ATTRIBUTE_DURATION = "duration";
++
++	private final Id<Person> personId;
++	private final String activityType;
++	private final double duration;
++
++	public UAMVertiportActivityWaitEvent(
++			double time,
++			Id<Person> personId,
++			String activityType,
++			double duration) {
++		super(time);
++		this.personId = personId;
++		this.activityType = activityType;
++		this.duration = duration;
++	}
++
++	@Override
++	public String getEventType() {
++		return EVENT_TYPE;
++	}
++
++	@Override
++	public Id<Person> getPersonId() {
++		return personId;
++	}
++
++	public String getActivityType() {
++		return activityType;
++	}
++
++	public double getDuration() {
++		return duration;
++	}
++
++	@Override
++	public Map<String, String> getAttributes() {
++		Map<String, String> attributes = super.getAttributes();
++		attributes.put("person", personId.toString());
++		attributes.put(ATTRIBUTE_ACTIVITY_TYPE, activityType);
++		attributes.put(ATTRIBUTE_DURATION, Double.toString(duration));
++		return attributes;
++	}
++}
+--- /dev/null
++++ b/src/main/java/net/bhl/matsim/uam/scoring/UAMVertiportActivityWaitTracker.java
+@@ -0,0 +1,72 @@
++package net.bhl.matsim.uam.scoring;
++
++import java.util.LinkedHashMap;
++import java.util.Map;
++import java.util.Set;
++
++import org.matsim.api.core.v01.Id;
++import org.matsim.api.core.v01.events.ActivityEndEvent;
++import org.matsim.api.core.v01.events.ActivityStartEvent;
++import org.matsim.api.core.v01.events.handler.ActivityEndEventHandler;
++import org.matsim.api.core.v01.events.handler.ActivityStartEventHandler;
++import org.matsim.api.core.v01.population.Person;
++import org.matsim.core.api.experimental.events.EventsManager;
++
++import com.google.inject.Inject;
++import com.google.inject.Singleton;
++
++/**
++ * Measures actual durations of vertiport processing and waiting activities.
++ */
++@Singleton
++public final class UAMVertiportActivityWaitTracker implements
++		ActivityStartEventHandler,
++		ActivityEndEventHandler {
++
++	private static final Set<String> WAITING_ACTIVITY_TYPES = Set.of(
++			"vertiport_entry",
++			"vertiport_boarding",
++			"vertiport_arrival",
++			"vertiport_interaction",
++			"uam_interaction",
++			"uam_terminal_wait");
++
++	private final EventsManager eventsManager;
++	private final Map<Id<Person>, ActivityStart> starts = new LinkedHashMap<>();
++
++	@Inject
++	public UAMVertiportActivityWaitTracker(EventsManager eventsManager) {
++		this.eventsManager = eventsManager;
++	}
++
++	@Override
++	public void handleEvent(ActivityStartEvent event) {
++		if (WAITING_ACTIVITY_TYPES.contains(event.getActType())) {
++			starts.put(event.getPersonId(), new ActivityStart(
++					event.getActType(), event.getTime()));
++		}
++	}
++
++	@Override
++	public void handleEvent(ActivityEndEvent event) {
++		ActivityStart start = starts.remove(event.getPersonId());
++		if (start == null || !start.activityType().equals(event.getActType())) {
++			return;
++		}
++
++		double duration = Math.max(0.0, event.getTime() - start.time());
++		eventsManager.processEvent(new UAMVertiportActivityWaitEvent(
++				event.getTime(),
++				event.getPersonId(),
++				event.getActType(),
++				duration));
++	}
++
++	@Override
++	public void reset(int iteration) {
++		starts.clear();
++	}
++
++	private record ActivityStart(String activityType, double time) {
++	}
++}

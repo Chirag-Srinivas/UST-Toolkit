@@ -1,0 +1,4 @@
+fastapi>=0.116,<1
+pyarrow>=20,<25
+pyproj>=3.7,<4
+uvicorn[standard]>=0.35,<1

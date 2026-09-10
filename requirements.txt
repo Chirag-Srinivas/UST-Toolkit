@@ -1,0 +1,4 @@
+networkx>=3.2,<4
+psutil>=5.9,<8
+PyYAML>=6,<7
+-r src/module5/requirements.txt
