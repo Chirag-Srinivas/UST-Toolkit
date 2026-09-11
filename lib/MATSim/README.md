@@ -1,6 +1,6 @@
 # MATSim-UAM modified source snapshot
 
-For the exact executable, download the [prepared toolkit bundle](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.0-prepared).
+For the exact executable, download the [prepared toolkit bundle](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.1-prepared).
 It already places the modified JAR in `lib/matsim-uam-5.0.0.jar`; no patching
 or Java rebuild is needed. A source checkout omits the JAR. See the
 [download and checksum guide](../../docs/RUNTIME-DOWNLOAD.md) for both workflows.

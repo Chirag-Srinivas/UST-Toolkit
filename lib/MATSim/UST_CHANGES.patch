@@ -233,7 +233,9 @@
 -	</dependencies>
 -</project>
 +    </dependencies>
-+</project>--- a/src/main/java/net/bhl/matsim/uam/config/UAMConfigGroup.java
++</project>
+\ No newline at end of file
+--- a/src/main/java/net/bhl/matsim/uam/config/UAMConfigGroup.java
 +++ b/src/main/java/net/bhl/matsim/uam/config/UAMConfigGroup.java
 @@ -16,6 +16,7 @@
  import jakarta.validation.constraints.NotEmpty;
@@ -1149,7 +1151,9 @@
 +
 +		return scoringFunction;
  	}
--}+
+-}
+\ No newline at end of file
++
 +	/**
 +	 * Scores realized vertiport processing directly with waiting utility, and
 +	 * converts the pre-boarding and post-boarding portions already included in
