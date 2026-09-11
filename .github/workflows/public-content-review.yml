@@ -32,3 +32,9 @@ jobs:
           name: public-content-review
           path: audit/evidence/
           retention-days: 30
+      - name: Preserve the verified input for local build comparison
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-runtime-input
+          path: audit/downloads/UST-Toolkit-v1.0.1.zip
+          retention-days: 1
