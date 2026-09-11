@@ -1,0 +1,34 @@
+name: Public content review
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/public-content-review.yml'
+      - 'scripts/review_public_contents.py'
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Review history and private release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p audit/downloads audit/evidence
+          gh release download v1.0.1-prepared --pattern UST-Toolkit-v1.0.1.zip --dir audit/downloads
+          echo '17f8324a9fbe6152007f7c51c2c9f8ec94d061a247c3efef92c77c2e77b9da66  audit/downloads/UST-Toolkit-v1.0.1.zip' | sha256sum -c -
+          python scripts/review_public_contents.py audit/downloads/UST-Toolkit-v1.0.1.zip audit/evidence
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-content-review
+          path: audit/evidence/
+          retention-days: 30
