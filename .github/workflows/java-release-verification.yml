@@ -6,7 +6,8 @@ on:
       - '.github/workflows/java-release-verification.yml'
       - 'scripts/verify_java_release.py'
       - 'scripts/java_release_smoke.py'
-      - 'lib/MATSim/**'
+      - 'lib/MATSim/src/**'
+      - 'lib/MATSim/pom.xml'
 permissions:
   contents: read
 jobs:

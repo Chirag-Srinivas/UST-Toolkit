@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.2 - verified source build
+
+- Supply a clean Java 21 build from the included source, removing two stale compiled classes.
+- Compare all application code, bundled dependency classes and module declarations.
+- Verify original/rebuilt runtimes in four synthetic no-PT simulations.
+- Repair upstream comparison patch formatting and record build and content-review evidence.
+- Preserve the original 1.0.0 and 1.0.1 release assets and separate MSc archive.
+
 ## 1.0.1 - optional public transport correction
 
 - Support empty train/bus lists and disabled PT while retaining the UAM fleet.
@@ -21,5 +29,5 @@
 - Record authorship and a maintenance policy with no promised future updates.
 
 Original UST code is licensed under GPL-3.0-only, as confirmed by the owner.
-Versions 1.0.0 and 1.0.1 are private prepared prereleases.
-See docs/RELEASE-READINESS.md for the remaining publication prerequisites.
+Versions 1.0.0, 1.0.1 and 1.0.2 were prepared as private research prereleases.
+See docs/RELEASE-READINESS.md for publication status and validation limits.

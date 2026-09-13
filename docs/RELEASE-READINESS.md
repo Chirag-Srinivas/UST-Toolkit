@@ -1,28 +1,42 @@
 # Release preparation status
 
-The source and documentation are uploaded to a private GitHub repository.
-The corrected 1.0.1 toolkit bundle is distributed as a prerelease with
-checksums; see [runtime download and setup](RUNTIME-DOWNLOAD.md).
-This does not complete the public-release or source-to-binary review.
+The toolkit's technical pre-publication checks are complete for the prepared
+1.0.2 research release. The repository remains private. See the
+[download guide](RUNTIME-DOWNLOAD.md), [Java build evidence](JAVA-BUILD-VALIDATION.md),
+and [public-content review](PUBLIC-CONTENT-REVIEW.md).
 
-Version 1.0.1 fixes the empty-public-transport defect found in 1.0.0.
-Both empty train/bus lists and explicitly disabled PT complete a synthetic
-Java simulation with the unchanged runtime. See [fix validation](OPTIONAL-TRANSPORT-FIX.md)
-and the [original validation report](FRESH-INSTALL-VALIDATION.md).
+## Completed
 
-- Definitive MSc selection confirmed: IRP_RESULTS_FINAL including T1.
-- Other result roots retained as historical material.
-- Author confirmed: Chirag Srinivas.
-- Maintenance policy: research release; no future maintenance promised.
-- GitHub username: Chirag-Srinivas. Repository: Chirag-Srinivas/UST-Toolkit; created and private.
-- Runtime versions confirmed by the owner and current POM: MATSim 2024.0, Java 21, UAM Extension 5.0.0.
-- Release JAR and POM match the current edited working files. The separately supplied reference pair differs; detailed comparison is deferred.
-- Licence for original toolkit code: GPL-3.0-only, confirmed by the owner; top-level LICENSE and COPYRIGHT.md included.
-- Modified MATSim-UAM source and upstream comparison: included.
-- Current JAR hash: recorded; clean source-to-binary rebuild not yet verified.
-- Network/input data provenance and redistribution terms: not established.
-- Full research archive: frozen as a 34.56 GB ZIP; too large for one GitHub asset.
-- All historical simulations rerun: no; freezing is preservation, not rerunning.
+- Original UST code licensed GPL-3.0-only with the owner's approval; author
+  Chirag Srinivas and research maintenance policy recorded.
+- Java source compared with official MATSim-UAM v5.0.0: nine modified and nine
+  added Java files, a modified POM, 139 unchanged files and no deletions.
+- Corrected comparison patch applies and reconstructs all 19 changed files.
+- Java 21/MATSim 2024.0 source built with an empty Maven dependency repository.
+- Rebuilt application code compared with the original runtime; the two
+  unreferenced legacy scoring classes are absent from the clean build.
+- Original and clean runtimes complete both no-PT modes in synthetic
+  two-iteration simulations, with matching recorded outcomes.
+- Python regression checks and frontend CI pass.
+- Release packaging verifies every file and runtime hash; history and release
+  scans check credential patterns and excluded archive paths.
+- Third-party notices, dependency inventory and upstream test-data provenance
+  recorded. The approved UST licence does not replace third-party terms.
 
-The MSc snapshot must not be called a validated reproduction of every run.
-Record any later corrections in a new version and retain the original hashes.
+## Scope
+
+Use 1.0.2 for the source-built runtime and repaired patch. Historical 1.0.0 and
+1.0.1 assets retain their original hashes. No claim of byte-identical
+reproducible JAR builds is made: ZIP/build metadata varies, and the original
+JAR includes two stale classes.
+
+The 34.56 GB MSc archive stays outside Git and toolkit releases. IRP_RESULTS_FINAL
+including T1 remains the definitive preserved study; other roots are historical.
+Publishing that archive or new study inputs requires a separate data-rights
+review. The supplied upstream Corsica test fixtures are identified separately
+in the public-content report.
+
+These checks validate the documented synthetic cases. They do not rerun every
+MSc experiment, establish the executable used by every historical run, prove
+scientific convergence, or establish redistribution rights for user inputs.
+The owner can choose when to make this prepared research repository public.

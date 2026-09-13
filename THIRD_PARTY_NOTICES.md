@@ -15,8 +15,15 @@ and contributors retain their copyright and licence terms.
   is recorded in lib/MATSim/PROVENANCE.json.
 
 The executable also bundles dependencies with their own applicable licence
-terms. A current clean rebuild/corresponding-source audit has not been completed.
-Do not describe the binary as an unmodified upstream release.
+terms. A clean build of the supplied modified source and comparison with the
+original runtime are recorded in docs/JAVA-BUILD-VALIDATION.md. The 1.0.2 JAR
+comes from that clean build; it is a modified UST runtime.
+
+The 94 embedded Maven POMs and eight licence/notice paths are inventoried in
+docs/evidence/bundled-dependencies.json; resolved dependency coordinates are in
+docs/evidence/dependency-tree.txt. These records and preserved embedded notices
+supplement the supplied source and Maven build declaration. Dependency licences
+remain applicable; the inventory is not a blanket legal certification.
 
 ## Python and frontend packages
 
@@ -25,6 +32,12 @@ Frontend dependencies and their resolved versions are declared in package.json
 and pnpm-lock.yaml under src/module5/frontend. Frontend licence inventory and
 available installed licence texts are in third_party/frontend-licenses/.
 These files are an inventory, not a replacement for the original licence terms.
+
+## Preserved upstream test fixtures
+
+The eight Corsica files under lib/MATSim/src/test/resources/corsica match
+MATSim-UAM v5.0.0 exactly. They retain upstream attribution and terms. See
+docs/PUBLIC-CONTENT-REVIEW.md and its blob-identity evidence.
 
 ## Study inputs and outputs
 

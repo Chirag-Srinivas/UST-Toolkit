@@ -1,0 +1,1358 @@
+{
+  "original": {
+    "sha256": "df139dc1ad847888ab55ffad74960ee022000b7b5afa51d7ae712443a463db4b",
+    "bytes": 89310293,
+    "embedded_poms": [
+      {
+        "path": "META-INF/maven/net.bhl.matsim/matsim-uam/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/commons-io/commons-io/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.matsim/matsim/pom.xml",
+        "licenses": [
+          {
+            "name": "GNU General Public License",
+            "url": "${basedir}/COPYING",
+            "comments": "See also the LICENSE file"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-main/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-http/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.apache.commons/commons-text/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-referencing/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/commons-pool/commons-pool/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-metadata/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-opengis/pom.xml",
+        "licenses": [
+          {
+            "name": "OGC copyright",
+            "url": "http://www.opengis.org/legal/",
+            "distribution": "repo"
+          },
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/systems.uom/systems-common/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/si.uom/si-quantity/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/si.uom/si-units/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/jakarta.annotation/jakarta.annotation-api/pom.xml",
+        "licenses": [
+          {
+            "name": "EPL 2.0",
+            "url": "http://www.eclipse.org/legal/epl-2.0",
+            "distribution": "repo"
+          },
+          {
+            "name": "GPL2 w/ CPE",
+            "url": "https://www.gnu.org/software/classpath/license.html",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/tech.units/indriya/pom.xml",
+        "licenses": [
+          {
+            "name": "BSD 3-Clause",
+            "url": "LICENSE"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/tech.uom.lib/uom-lib-common/pom.xml",
+        "licenses": [
+          {
+            "name": "BSD",
+            "url": "LICENSE"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools.ogc/net.opengis.ows/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.geotools.ogc/org.w3.xlink/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/it.geosolutions.jgridshift/jgridshift-core/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/net.sf.geographiclib/GeographicLib-Java/pom.xml",
+        "licenses": [
+          {
+            "name": "The MIT License(MIT)",
+            "url": "http://opensource.org/licenses/MIT"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-shapefile/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-geopkg/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-jdbc/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/commons-dbcp/commons-dbcp/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.xerial/sqlite-jdbc/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache Software License, Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools.xsd/gt-xsd-core/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-xml/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/commons-jxpath/commons-jxpath/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.eclipse.emf/org.eclipse.emf.common/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.eclipse.emf/org.eclipse.emf.ecore/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.eclipse.emf/org.eclipse.emf.ecore.xmi/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.geotools.xsd/gt-xsd-fes/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools.ogc/net.opengis.fes/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.geotools.xsd/gt-xsd-gml3/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools.xsd/gt-xsd-gml2/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools.xsd/gt-xsd-ows/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools.xsd/gt-xsd-filter/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-epsg-hsql/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "https://github.com/geotools/geotools/blob/master/modules/plugin/epsg-hsql/LICENSE.txt",
+            "distribution": "repo"
+          },
+          {
+            "name": "EPSG database distribution license",
+            "url": "https://github.com/geotools/geotools/blob/master/licenses/EPSG.md",
+            "distribution": "repo",
+            "comments": "This Geotools module is bundled with a copy of the EPSG database. The\n        data may be copied and distributed subject to the EPSG conditions."
+          },
+          {
+            "name": "BSD License for HSQL",
+            "url": "https://github.com/geotools/geotools/blob/master/licenses/HSQL.md",
+            "distribution": "repo",
+            "comments": "This Geotools module requires the HSQL database engine, which is bundled\n        with the binary distribution only (there is no HSQL derived work in the\n        Java source code)."
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.locationtech.jts/jts-core/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.jfree/jfreechart/pom.xml",
+        "licenses": [
+          {
+            "name": "GNU Lesser General Public Licence",
+            "url": "http://www.gnu.org/licenses/lgpl.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/jakarta.inject/jakarta.inject-api/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache Software License, Version 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.google.guava/guava/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.google.guava/failureaccess/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.google.guava/listenablefuture/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.google.code.findbugs/jsr305/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache Software License, Version 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.google.errorprone/error_prone_annotations/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.google.j2objc/j2objc-annotations/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache License, Version 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.jgrapht/jgrapht-core/pom.xml",
+        "licenses": [
+          {
+            "name": "GNU Lesser General Public License Version 2.1, February 1999",
+            "url": "http://jgrapht.sourceforge.net/LGPL.html",
+            "distribution": "repo"
+          },
+          {
+            "name": "Eclipse Public License (EPL) 2.0",
+            "url": "http://www.eclipse.org/legal/epl-v20.html",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.apfloat/apfloat/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/jakarta.validation/jakarta.validation-api/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache License 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.hibernate.validator/hibernate-validator/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.jboss.logging/jboss-logging/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache License, version 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.fasterxml/classmate/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache License, Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.hibernate.validator/hibernate-validator-annotation-processor/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.glassfish/jakarta.el/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/jakarta.el/jakarta.el-api/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.apache.commons/commons-compress/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/commons-codec/commons-codec/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.apache.commons/commons-csv/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/jakarta.xml.bind/jakarta.xml.bind-api/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/jakarta.activation/jakarta.activation-api/pom.xml",
+        "licenses": [
+          {
+            "name": "EDL 1.0",
+            "url": "http://www.eclipse.org/org/documents/edl-v10.php",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.glassfish.jaxb/jaxb-runtime/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.sun.xml.bind/jaxb-impl/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.sun.istack/istack-commons-runtime/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.glassfish.jaxb/jaxb-core/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.glassfish.jaxb/txw2/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.sun.xml.bind/jaxb-core/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.eclipse.angus/angus-activation/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.fasterxml.jackson.core/jackson-databind/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache Software License, Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.fasterxml.jackson.core/jackson-annotations/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache Software License, Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.fasterxml.jackson.core/jackson-core/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache Software License, Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.fasterxml.woodstox/woodstox-core/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache License, Version 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/net.java.dev.msv/xsdlib/pom.xml",
+        "licenses": [
+          {
+            "name": "BSD",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.sun.xml.bind.jaxb/isorelax/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.codehaus.woodstox/stax2-api/pom.xml",
+        "licenses": [
+          {
+            "name": "The BSD 2-Clause License",
+            "url": "http://www.opensource.org/licenses/bsd-license.php",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.apache.logging.log4j/log4j-api/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache-2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.apache.logging.log4j/log4j-core/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache-2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.github.jai-imageio/jai-imageio-core/pom.xml",
+        "licenses": [
+          {
+            "name": "BSD 3-clause License w/nuclear disclaimer",
+            "url": "LICENSE.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.matsim.contrib/dvrp/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.apache.commons/commons-lang3/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.matsim.contrib/otfvis/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.matsim.contrib/ev/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.apache.commons/commons-math3/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/one.util/streamex/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache License, Version 2.0",
+            "url": "${license.url}",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/commons-logging/commons-logging/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.matsim.contrib/discrete_mode_choice/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.matsim.contrib/common/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.opencsv/opencsv/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache 2",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo",
+            "comments": "A business-friendly OSS license"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/commons-beanutils/commons-beanutils/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/commons-collections/commons-collections/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.apache.commons/commons-collections4/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.uber/h3/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache License, Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.matsim.contrib/osm/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.slf4j/slf4j-api/pom.xml",
+        "licenses": []
+      }
+    ],
+    "notice_files": [
+      "META-INF/LICENSE.txt",
+      "META-INF/NOTICE.txt",
+      "META-INF/LICENSE.md",
+      "META-INF/NOTICE.md",
+      "META-INF/LICENSE",
+      "META-INF/maven/org.xerial/sqlite-jdbc/LICENSE.zentus",
+      "META-INF/maven/org.xerial/sqlite-jdbc/LICENSE",
+      "META-INF/NOTICE"
+    ]
+  },
+  "rebuilt": {
+    "sha256": "e0a4e3790b31a7d54bb0abbb52512bd7844184d8b4cc2a74e65e7ad642ea8118",
+    "bytes": 89251954,
+    "embedded_poms": [
+      {
+        "path": "META-INF/maven/net.bhl.matsim/matsim-uam/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/commons-io/commons-io/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.matsim/matsim/pom.xml",
+        "licenses": [
+          {
+            "name": "GNU General Public License",
+            "url": "${basedir}/COPYING",
+            "comments": "See also the LICENSE file"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-main/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-http/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.apache.commons/commons-text/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-referencing/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/commons-pool/commons-pool/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-metadata/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-opengis/pom.xml",
+        "licenses": [
+          {
+            "name": "OGC copyright",
+            "url": "http://www.opengis.org/legal/",
+            "distribution": "repo"
+          },
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/systems.uom/systems-common/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/si.uom/si-quantity/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/si.uom/si-units/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/jakarta.annotation/jakarta.annotation-api/pom.xml",
+        "licenses": [
+          {
+            "name": "EPL 2.0",
+            "url": "http://www.eclipse.org/legal/epl-2.0",
+            "distribution": "repo"
+          },
+          {
+            "name": "GPL2 w/ CPE",
+            "url": "https://www.gnu.org/software/classpath/license.html",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/tech.units/indriya/pom.xml",
+        "licenses": [
+          {
+            "name": "BSD 3-Clause",
+            "url": "LICENSE"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/tech.uom.lib/uom-lib-common/pom.xml",
+        "licenses": [
+          {
+            "name": "BSD",
+            "url": "LICENSE"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools.ogc/net.opengis.ows/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.geotools.ogc/org.w3.xlink/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/it.geosolutions.jgridshift/jgridshift-core/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/net.sf.geographiclib/GeographicLib-Java/pom.xml",
+        "licenses": [
+          {
+            "name": "The MIT License(MIT)",
+            "url": "http://opensource.org/licenses/MIT"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-shapefile/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-geopkg/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-jdbc/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/commons-dbcp/commons-dbcp/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.xerial/sqlite-jdbc/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache Software License, Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools.xsd/gt-xsd-core/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-xml/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/commons-jxpath/commons-jxpath/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.eclipse.emf/org.eclipse.emf.common/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.eclipse.emf/org.eclipse.emf.ecore/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.eclipse.emf/org.eclipse.emf.ecore.xmi/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.geotools.xsd/gt-xsd-fes/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools.ogc/net.opengis.fes/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.geotools.xsd/gt-xsd-gml3/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools.xsd/gt-xsd-gml2/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools.xsd/gt-xsd-ows/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools.xsd/gt-xsd-filter/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "http://www.gnu.org/copyleft/lesser.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.geotools/gt-epsg-hsql/pom.xml",
+        "licenses": [
+          {
+            "name": "Lesser General Public License (LGPL)",
+            "url": "https://github.com/geotools/geotools/blob/master/modules/plugin/epsg-hsql/LICENSE.txt",
+            "distribution": "repo"
+          },
+          {
+            "name": "EPSG database distribution license",
+            "url": "https://github.com/geotools/geotools/blob/master/licenses/EPSG.md",
+            "distribution": "repo",
+            "comments": "This Geotools module is bundled with a copy of the EPSG database. The\n        data may be copied and distributed subject to the EPSG conditions."
+          },
+          {
+            "name": "BSD License for HSQL",
+            "url": "https://github.com/geotools/geotools/blob/master/licenses/HSQL.md",
+            "distribution": "repo",
+            "comments": "This Geotools module requires the HSQL database engine, which is bundled\n        with the binary distribution only (there is no HSQL derived work in the\n        Java source code)."
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.locationtech.jts/jts-core/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.jfree/jfreechart/pom.xml",
+        "licenses": [
+          {
+            "name": "GNU Lesser General Public Licence",
+            "url": "http://www.gnu.org/licenses/lgpl.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/jakarta.inject/jakarta.inject-api/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache Software License, Version 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.google.guava/guava/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.google.guava/failureaccess/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.google.guava/listenablefuture/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.google.code.findbugs/jsr305/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache Software License, Version 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.google.errorprone/error_prone_annotations/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.google.j2objc/j2objc-annotations/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache License, Version 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.jgrapht/jgrapht-core/pom.xml",
+        "licenses": [
+          {
+            "name": "GNU Lesser General Public License Version 2.1, February 1999",
+            "url": "http://jgrapht.sourceforge.net/LGPL.html",
+            "distribution": "repo"
+          },
+          {
+            "name": "Eclipse Public License (EPL) 2.0",
+            "url": "http://www.eclipse.org/legal/epl-v20.html",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.apfloat/apfloat/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/jakarta.validation/jakarta.validation-api/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache License 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.hibernate.validator/hibernate-validator/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.jboss.logging/jboss-logging/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache License, version 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.fasterxml/classmate/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache License, Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.hibernate.validator/hibernate-validator-annotation-processor/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.glassfish/jakarta.el/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/jakarta.el/jakarta.el-api/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.apache.commons/commons-compress/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/commons-codec/commons-codec/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.apache.commons/commons-csv/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/jakarta.xml.bind/jakarta.xml.bind-api/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/jakarta.activation/jakarta.activation-api/pom.xml",
+        "licenses": [
+          {
+            "name": "EDL 1.0",
+            "url": "http://www.eclipse.org/org/documents/edl-v10.php",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.glassfish.jaxb/jaxb-runtime/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.sun.xml.bind/jaxb-impl/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.sun.istack/istack-commons-runtime/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.glassfish.jaxb/jaxb-core/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.glassfish.jaxb/txw2/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.sun.xml.bind/jaxb-core/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.eclipse.angus/angus-activation/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.fasterxml.jackson.core/jackson-databind/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache Software License, Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.fasterxml.jackson.core/jackson-annotations/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache Software License, Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.fasterxml.jackson.core/jackson-core/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache Software License, Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.fasterxml.woodstox/woodstox-core/pom.xml",
+        "licenses": [
+          {
+            "name": "The Apache License, Version 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/net.java.dev.msv/xsdlib/pom.xml",
+        "licenses": [
+          {
+            "name": "BSD",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.sun.xml.bind.jaxb/isorelax/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.codehaus.woodstox/stax2-api/pom.xml",
+        "licenses": [
+          {
+            "name": "The BSD 2-Clause License",
+            "url": "http://www.opensource.org/licenses/bsd-license.php",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.apache.logging.log4j/log4j-api/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache-2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.apache.logging.log4j/log4j-core/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache-2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/com.github.jai-imageio/jai-imageio-core/pom.xml",
+        "licenses": [
+          {
+            "name": "BSD 3-clause License w/nuclear disclaimer",
+            "url": "LICENSE.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.matsim.contrib/dvrp/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.apache.commons/commons-lang3/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.matsim.contrib/otfvis/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.matsim.contrib/ev/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.apache.commons/commons-math3/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/one.util/streamex/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache License, Version 2.0",
+            "url": "${license.url}",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/commons-logging/commons-logging/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.matsim.contrib/discrete_mode_choice/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.matsim.contrib/common/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.opencsv/opencsv/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache 2",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo",
+            "comments": "A business-friendly OSS license"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/commons-beanutils/commons-beanutils/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/commons-collections/commons-collections/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.apache.commons/commons-collections4/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/com.uber/h3/pom.xml",
+        "licenses": [
+          {
+            "name": "Apache License, Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "distribution": "repo"
+          }
+        ]
+      },
+      {
+        "path": "META-INF/maven/org.matsim.contrib/osm/pom.xml",
+        "licenses": []
+      },
+      {
+        "path": "META-INF/maven/org.slf4j/slf4j-api/pom.xml",
+        "licenses": []
+      }
+    ],
+    "notice_files": [
+      "META-INF/LICENSE.txt",
+      "META-INF/NOTICE.txt",
+      "META-INF/LICENSE.md",
+      "META-INF/NOTICE.md",
+      "META-INF/LICENSE",
+      "META-INF/maven/org.xerial/sqlite-jdbc/LICENSE.zentus",
+      "META-INF/maven/org.xerial/sqlite-jdbc/LICENSE",
+      "META-INF/NOTICE"
+    ]
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "original-empty": {
+    "jar_sha256": "df139dc1ad847888ab55ffad74960ee022000b7b5afa51d7ae712443a463db4b",
+    "iterations": {
+      "0": {
+        "arrived": 12,
+        "uam_pickups": 8,
+        "uam_dropoffs": 8,
+        "stuck": 0
+      },
+      "1": {
+        "arrived": 12,
+        "uam_pickups": 4,
+        "uam_dropoffs": 4,
+        "stuck": 0
+      }
+    },
+    "outcomes": {
+      "definition": "Outcomes use executed MATSim events: a UAM passenger drop-off takes precedence, otherwise PT or car is identified from observed leg modes. Travellers without a recognised executed mode are reported as unobserved.",
+      "eligibleTravellers": 12,
+      "uamCompleted": 4,
+      "carSelected": 8,
+      "ptSelected": 0,
+      "unobserved": 0,
+      "abandonmentRate": 0.6667,
+      "byUrgency": [
+        {
+          "urgency": "high_urgency",
+          "eligible": 7,
+          "uamCompleted": 2,
+          "carSelected": 5,
+          "ptSelected": 0,
+          "unobserved": 0,
+          "abandonmentRate": 0.7143
+        },
+        {
+          "urgency": "low_urgency",
+          "eligible": 5,
+          "uamCompleted": 2,
+          "carSelected": 3,
+          "ptSelected": 0,
+          "unobserved": 0,
+          "abandonmentRate": 0.6
+        }
+      ]
+    }
+  },
+  "original-disabled": {
+    "jar_sha256": "df139dc1ad847888ab55ffad74960ee022000b7b5afa51d7ae712443a463db4b",
+    "iterations": {
+      "0": {
+        "arrived": 12,
+        "uam_pickups": 8,
+        "uam_dropoffs": 8,
+        "stuck": 0
+      },
+      "1": {
+        "arrived": 12,
+        "uam_pickups": 4,
+        "uam_dropoffs": 4,
+        "stuck": 0
+      }
+    },
+    "outcomes": {
+      "definition": "Outcomes use executed MATSim events: a UAM passenger drop-off takes precedence, otherwise PT or car is identified from observed leg modes. Travellers without a recognised executed mode are reported as unobserved.",
+      "eligibleTravellers": 12,
+      "uamCompleted": 4,
+      "carSelected": 8,
+      "ptSelected": 0,
+      "unobserved": 0,
+      "abandonmentRate": 0.6667,
+      "byUrgency": [
+        {
+          "urgency": "high_urgency",
+          "eligible": 7,
+          "uamCompleted": 2,
+          "carSelected": 5,
+          "ptSelected": 0,
+          "unobserved": 0,
+          "abandonmentRate": 0.7143
+        },
+        {
+          "urgency": "low_urgency",
+          "eligible": 5,
+          "uamCompleted": 2,
+          "carSelected": 3,
+          "ptSelected": 0,
+          "unobserved": 0,
+          "abandonmentRate": 0.6
+        }
+      ]
+    }
+  },
+  "rebuilt-empty": {
+    "jar_sha256": "e0a4e3790b31a7d54bb0abbb52512bd7844184d8b4cc2a74e65e7ad642ea8118",
+    "iterations": {
+      "0": {
+        "arrived": 12,
+        "uam_pickups": 8,
+        "uam_dropoffs": 8,
+        "stuck": 0
+      },
+      "1": {
+        "arrived": 12,
+        "uam_pickups": 4,
+        "uam_dropoffs": 4,
+        "stuck": 0
+      }
+    },
+    "outcomes": {
+      "definition": "Outcomes use executed MATSim events: a UAM passenger drop-off takes precedence, otherwise PT or car is identified from observed leg modes. Travellers without a recognised executed mode are reported as unobserved.",
+      "eligibleTravellers": 12,
+      "uamCompleted": 4,
+      "carSelected": 8,
+      "ptSelected": 0,
+      "unobserved": 0,
+      "abandonmentRate": 0.6667,
+      "byUrgency": [
+        {
+          "urgency": "high_urgency",
+          "eligible": 7,
+          "uamCompleted": 2,
+          "carSelected": 5,
+          "ptSelected": 0,
+          "unobserved": 0,
+          "abandonmentRate": 0.7143
+        },
+        {
+          "urgency": "low_urgency",
+          "eligible": 5,
+          "uamCompleted": 2,
+          "carSelected": 3,
+          "ptSelected": 0,
+          "unobserved": 0,
+          "abandonmentRate": 0.6
+        }
+      ]
+    }
+  },
+  "rebuilt-disabled": {
+    "jar_sha256": "e0a4e3790b31a7d54bb0abbb52512bd7844184d8b4cc2a74e65e7ad642ea8118",
+    "iterations": {
+      "0": {
+        "arrived": 12,
+        "uam_pickups": 8,
+        "uam_dropoffs": 8,
+        "stuck": 0
+      },
+      "1": {
+        "arrived": 12,
+        "uam_pickups": 4,
+        "uam_dropoffs": 4,
+        "stuck": 0
+      }
+    },
+    "outcomes": {
+      "definition": "Outcomes use executed MATSim events: a UAM passenger drop-off takes precedence, otherwise PT or car is identified from observed leg modes. Travellers without a recognised executed mode are reported as unobserved.",
+      "eligibleTravellers": 12,
+      "uamCompleted": 4,
+      "carSelected": 8,
+      "ptSelected": 0,
+      "unobserved": 0,
+      "abandonmentRate": 0.6667,
+      "byUrgency": [
+        {
+          "urgency": "high_urgency",
+          "eligible": 7,
+          "uamCompleted": 2,
+          "carSelected": 5,
+          "ptSelected": 0,
+          "unobserved": 0,
+          "abandonmentRate": 0.7143
+        },
+        {
+          "urgency": "low_urgency",
+          "eligible": 5,
+          "uamCompleted": 2,
+          "carSelected": 3,
+          "ptSelected": 0,
+          "unobserved": 0,
+          "abandonmentRate": 0.6
+        }
+      ]
+    }
+  }
+}

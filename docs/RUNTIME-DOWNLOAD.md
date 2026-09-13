@@ -1,11 +1,12 @@
 # Download the exact prepared runtime
 
-For normal use, download **UST-Toolkit-v1.0.1.zip** from the
-[prepared toolkit prerelease](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.1-prepared).
+For normal use, download **UST-Toolkit-v1.0.2.zip** from the
+[prepared toolkit prerelease](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.2-prepared).
 The repository is private, so sign in with an account that has access.
 
-Version 1.0.1 corrects UAM/car-only scenarios with empty train/bus lists or
-disabled PT. See [fix validation and limits](OPTIONAL-TRANSPORT-FIX.md).
+Version 1.0.2 supplies the verified clean Java build and includes the 1.0.1
+correction for empty or disabled PT. See [Java build validation](JAVA-BUILD-VALIDATION.md)
+and [no-PT fix validation](OPTIONAL-TRANSPORT-FIX.md).
 
 This bundle includes the exact modified `lib/matsim-uam-5.0.0.jar`, the edited
 Java source and POM, resources/DTD, Python toolkit, compiled dashboard, licences
@@ -15,22 +16,22 @@ Git clone contain source only and do not include the JAR.
 
 ## Verify and extract
 
-Download `UST-Toolkit-v1.0.1.zip` and `SHA256SUMS-toolkit.txt` from the release.
+Download `UST-Toolkit-v1.0.2.zip` and `SHA256SUMS-toolkit.txt` from the release.
 Compare the ZIP SHA-256 with the value in the release checksum asset.
 
 In PowerShell, run this in the download folder and compare the result:
 
 ```powershell
-Get-FileHash .\UST-Toolkit-v1.0.1.zip -Algorithm SHA256
-Expand-Archive .\UST-Toolkit-v1.0.1.zip -DestinationPath .\UST-download
-cd .\UST-download\UST-Toolkit-v1.0.1
+Get-FileHash .\UST-Toolkit-v1.0.2.zip -Algorithm SHA256
+Expand-Archive .\UST-Toolkit-v1.0.2.zip -DestinationPath .\UST-download
+cd .\UST-download\UST-Toolkit-v1.0.2
 Get-FileHash .\lib\matsim-uam-5.0.0.jar -Algorithm SHA256
 ```
 
-The JAR is 89,310,293 bytes. Its SHA-256 must be:
+The JAR is 89,251,954 bytes. Its SHA-256 must be:
 
 ```text
-df139dc1ad847888ab55ffad74960ee022000b7b5afa51d7ae712443a463db4b
+e0a4e3790b31a7d54bb0abbb52512bd7844184d8b4cc2a74e65e7ad642ea8118
 ```
 
 On Linux use `sha256sum`; on macOS use `shasum -a 256` to check the same files.
@@ -65,13 +66,15 @@ and follow the same setup steps. The JAR remains ignored by Git.
 
 ## What the checks establish
 
-The bundle preserves the exact recorded working executable for MATSim 2024.0
-and UAM Extension 5.0.0. All manifest-listed files are read back and their
+The bundle contains the exact tested clean-build executable for MATSim 2024.0
+and the locally modified UAM Extension 5.0.0. All manifest-listed files are read back and their
 sizes and SHA-256 hashes checked before upload. The release includes the file
-manifest. This confirms file identity, not a clean rebuild of the JAR from the
-supplied source or validation of every historical simulation. See
+manifest. The JAR was built from the supplied source and compared with the
+original runtime; all four synthetic original/rebuilt simulations pass. This
+does not establish whole-JAR byte reproducibility or validate every historical
+simulation. See [build evidence](JAVA-BUILD-VALIDATION.md). See
 [runtime provenance](../lib/MATSim/PROVENANCE.json) and
 [validation limits](VALIDATION.md).
 
-The original 1.0.0 prerelease and its hashes remain available unchanged.
+The original 1.0.0 and 1.0.1 prereleases and their hashes remain available unchanged.
 The 34.56 GB MSc archive is separate and is not included in this bundle or Git history.

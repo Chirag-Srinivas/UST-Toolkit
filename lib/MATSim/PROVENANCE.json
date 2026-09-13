@@ -3,9 +3,9 @@
   "comparisonTag": "v5.0.0",
   "comparisonCommit": "d11241567d56c262da8cdd5752828556f9080d68",
   "snapshotDate": "2026-09-10",
-  "runtimeSha256": "df139dc1ad847888ab55ffad74960ee022000b7b5afa51d7ae712443a463db4b",
-  "runtimeBytes": 89310293,
-  "sourceBinaryRebuildVerified": false,
+  "runtimeSha256": "e0a4e3790b31a7d54bb0abbb52512bd7844184d8b4cc2a74e65e7ad642ea8118",
+  "runtimeBytes": 89251954,
+  "sourceBinaryRebuildVerified": true,
   "changesAgainstComparisonTag": [
     {
       "path": "pom.xml",
@@ -140,7 +140,7 @@
     }
   ],
   "userProvidedComparisonReferences": {
-    "status": "References supplied by the owner; not verified as an unmodified upstream download. Detailed comparison deferred.",
+    "status": "Owner-supplied comparison pair remains unverified as an upstream download. Official upstream comparison used v5.0.0 commit d11241567d56c262da8cdd5752828556f9080d68; see docs/MATSIM-UAM-V5-COMPARISON.md.",
     "files": [
       {
         "name": "pom.xml",
@@ -154,5 +154,27 @@
       }
     ],
     "includedInDistribution": false
+  },
+  "originalWorkingRuntime": {
+    "sha256": "df139dc1ad847888ab55ffad74960ee022000b7b5afa51d7ae712443a463db4b",
+    "bytes": 89310293,
+    "preservedInReleases": [
+      "v1.0.0-prepared",
+      "v1.0.1-prepared"
+    ],
+    "sourceBinaryByteIdentical": false
+  },
+  "sourceBinaryRebuildScope": "The 1.0.2 JAR is the preserved output of the clean build of the supplied Java source. Whole-JAR reproducibility and exact historical-run provenance are not claimed.",
+  "cleanBuild": {
+    "date": "2026-09-13",
+    "sourceCommit": "360a098aad38094f81b35f5c731d3396f22d1eb4",
+    "workflowRun": 34772357127,
+    "workflowUrl": "https://github.com/Chirag-Srinivas/UST-Toolkit/actions/runs/34772357127",
+    "java": "BellSoft Liberica 21.0.12+10-LTS",
+    "maven": "3.9.16",
+    "platform": "Linux x86-64",
+    "emptyMavenRepository": true,
+    "artifactId": 10322043333,
+    "report": "../../docs/JAVA-BUILD-VALIDATION.md"
   }
 }

@@ -1,0 +1,116 @@
+[
+  {
+    "path": "pom.xml",
+    "patched_bytes": 5265,
+    "released_bytes": 5131,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/config/UAMConfigGroup.java",
+    "patched_bytes": 7201,
+    "released_bytes": 7014,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/dispatcher/UAMClosestRangedPreferPooledDispatcher.java",
+    "patched_bytes": 8619,
+    "released_bytes": 8387,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/qsim/UAMQSimModule.java",
+    "patched_bytes": 7345,
+    "released_bytes": 7173,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/replanning/LoggedChangeExpBeta.java",
+    "patched_bytes": 943,
+    "released_bytes": 919,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/replanning/LoggedPlanStrategy.java",
+    "patched_bytes": 1303,
+    "released_bytes": 1264,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/replanning/LoggedSelectRandom.java",
+    "patched_bytes": 758,
+    "released_bytes": 739,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/run/RunUAMScenario.java",
+    "patched_bytes": 3305,
+    "released_bytes": 3202,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/run/UAMModule.java",
+    "patched_bytes": 7301,
+    "released_bytes": 7128,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scenario/RunCreateUAMRoutedScenario.java",
+    "patched_bytes": 24037,
+    "released_bytes": 23458,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scenario/utils/ConfigAddUAMParameters.java",
+    "patched_bytes": 4823,
+    "released_bytes": 4721,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/schedule/UAMSingleRideAppender.java",
+    "patched_bytes": 7351,
+    "released_bytes": 7173,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMPostBoardingQueueEvent.java",
+    "patched_bytes": 1456,
+    "released_bytes": 1401,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMPostBoardingQueueTracker.java",
+    "patched_bytes": 2972,
+    "released_bytes": 2876,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMPreBoardingWaitEvent.java",
+    "patched_bytes": 1458,
+    "released_bytes": 1403,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMPreBoardingWaitTracker.java",
+    "patched_bytes": 2384,
+    "released_bytes": 2304,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMScoringFunctionFactory.java",
+    "patched_bytes": 4211,
+    "released_bytes": 4104,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMVertiportActivityWaitEvent.java",
+    "patched_bytes": 1584,
+    "released_bytes": 1525,
+    "matches_normalized": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMVertiportActivityWaitTracker.java",
+    "patched_bytes": 2142,
+    "released_bytes": 2070,
+    "matches_normalized": true
+  }
+]

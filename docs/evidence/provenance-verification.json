@@ -1,0 +1,97 @@
+[
+  {
+    "path": "pom.xml",
+    "recorded_hash_matches_lf": false,
+    "recorded_hash_matches_crlf": true
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/config/UAMConfigGroup.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/dispatcher/UAMClosestRangedPreferPooledDispatcher.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/qsim/UAMQSimModule.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/replanning/LoggedChangeExpBeta.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/replanning/LoggedPlanStrategy.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/replanning/LoggedSelectRandom.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/run/RunUAMScenario.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/run/UAMModule.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scenario/RunCreateUAMRoutedScenario.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scenario/utils/ConfigAddUAMParameters.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/schedule/UAMSingleRideAppender.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMPostBoardingQueueEvent.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMPostBoardingQueueTracker.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMPreBoardingWaitEvent.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMPreBoardingWaitTracker.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMScoringFunctionFactory.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMVertiportActivityWaitEvent.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  },
+  {
+    "path": "src/main/java/net/bhl/matsim/uam/scoring/UAMVertiportActivityWaitTracker.java",
+    "recorded_hash_matches_lf": true,
+    "recorded_hash_matches_crlf": false
+  }
+]

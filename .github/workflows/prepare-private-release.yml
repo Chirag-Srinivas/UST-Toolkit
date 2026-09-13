@@ -1,0 +1,52 @@
+name: Prepare verified private release
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/prepare-private-release.yml'
+permissions:
+  contents: write
+  actions: read
+jobs:
+  prepare:
+    if: github.repository == 'Chirag-Srinivas/UST-Toolkit' && github.event.repository.private && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify build provenance and private destination
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          test "$(gh api repos/$GITHUB_REPOSITORY --jq .private)" = "true"
+          gh api repos/$GITHUB_REPOSITORY/actions/runs/34772357127 > /tmp/ust-build-run.json
+          python -c "import json; r=json.load(open('/tmp/ust-build-run.json')); assert r['conclusion']=='success' and r['head_sha']=='360a098aad38094f81b35f5c731d3396f22d1eb4'"
+          git diff --exit-code 360a098aad38094f81b35f5c731d3396f22d1eb4 HEAD -- lib/MATSim/src lib/MATSim/pom.xml
+      - uses: actions/download-artifact@v4
+        with:
+          name: clean-built-runtime
+          path: /tmp/ust-runtime
+          github-token: ${{ github.token }}
+          run-id: 34772357127
+      - name: Package and verify every file
+        run: python scripts/package_verified_release.py /tmp/ust-runtime/matsim-uam-5.0.0.jar /tmp/ust-release
+      - name: Review complete history and candidate archive
+        run: python scripts/review_public_contents.py /tmp/ust-release/UST-Toolkit-v1.0.2.zip /tmp/ust-release-review
+      - name: Publish prepared prerelease in the private repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          test "$(gh api repos/$GITHUB_REPOSITORY --jq .private)" = "true"
+          gh release create v1.0.2-prepared --target "$GITHUB_SHA" --prerelease --title "UST Toolkit 1.0.2 - verified Java build" --notes-file docs/RELEASE-NOTES-1.0.2.md /tmp/ust-release/UST-Toolkit-v1.0.2.zip /tmp/ust-release/SHA256SUMS-toolkit.txt /tmp/ust-release/RELEASE-MANIFEST.json /tmp/ust-release-review/public-content-review.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: private-release-review
+          path: /tmp/ust-release-review/
+          retention-days: 30

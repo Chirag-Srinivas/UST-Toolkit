@@ -1,0 +1,12 @@
+{
+  "unique_history_blobs_scanned": 410,
+  "suspicious_secret_patterns": [],
+  "forbidden_history_file_paths": [],
+  "release_file_count": 506,
+  "release_sha256": "17f8324a9fbe6152007f7c51c2c9f8ec94d061a247c3efef92c77c2e77b9da66",
+  "release_archives": [],
+  "release_runtime_files": [
+    "UST-Toolkit-v1.0.1/lib/matsim-uam-5.0.0.jar"
+  ],
+  "limitations": "Pattern scan, not a guarantee against every secret format. Upstream test-data and dependency attribution are reviewed separately."
+}

@@ -1,0 +1,45 @@
+{
+  "upstreamCommit": "d11241567d56c262da8cdd5752828556f9080d68",
+  "files": [
+    {
+      "path": "lib/MATSim/src/test/resources/corsica/corsica_config.xml",
+      "repositoryBlob": "b55f72ea523a0091f869b0e74f242ccaebadb73e",
+      "upstreamBlob": "b55f72ea523a0091f869b0e74f242ccaebadb73e"
+    },
+    {
+      "path": "lib/MATSim/src/test/resources/corsica/corsica_facilities.xml.gz",
+      "repositoryBlob": "39f775d24c916bc9c4cef1dd2b2451d6f15f4318",
+      "upstreamBlob": "39f775d24c916bc9c4cef1dd2b2451d6f15f4318"
+    },
+    {
+      "path": "lib/MATSim/src/test/resources/corsica/corsica_households.xml.gz",
+      "repositoryBlob": "37f05f74985d6adeb8a063debc1a97408a06a864",
+      "upstreamBlob": "37f05f74985d6adeb8a063debc1a97408a06a864"
+    },
+    {
+      "path": "lib/MATSim/src/test/resources/corsica/corsica_network.xml.gz",
+      "repositoryBlob": "14b1783fbfa84cdfb9b70fdf66cabc29c87fb099",
+      "upstreamBlob": "14b1783fbfa84cdfb9b70fdf66cabc29c87fb099"
+    },
+    {
+      "path": "lib/MATSim/src/test/resources/corsica/corsica_population.xml.gz",
+      "repositoryBlob": "c0b12230688c3c066649c7c741c6c70d328067e5",
+      "upstreamBlob": "c0b12230688c3c066649c7c741c6c70d328067e5"
+    },
+    {
+      "path": "lib/MATSim/src/test/resources/corsica/corsica_transit_schedule.xml.gz",
+      "repositoryBlob": "3d18c2e7ce779f7f4ab14708bc06a0e368b504e6",
+      "upstreamBlob": "3d18c2e7ce779f7f4ab14708bc06a0e368b504e6"
+    },
+    {
+      "path": "lib/MATSim/src/test/resources/corsica/corsica_transit_vehicles.xml.gz",
+      "repositoryBlob": "cf4c22a664a55cc7bafeb7b3e505eaf127482801",
+      "upstreamBlob": "cf4c22a664a55cc7bafeb7b3e505eaf127482801"
+    },
+    {
+      "path": "lib/MATSim/src/test/resources/corsica/uam_network.xml",
+      "repositoryBlob": "371fc40f75027b74036272430d4e676186167180",
+      "upstreamBlob": "371fc40f75027b74036272430d4e676186167180"
+    }
+  ]
+}

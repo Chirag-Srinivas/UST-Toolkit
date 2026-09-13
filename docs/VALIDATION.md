@@ -1,4 +1,9 @@
-# Local release validation
+# Release validation
+
+**13 September 2026:** a clean Java build and four original/rebuilt synthetic
+simulations now pass. See [Java build validation](JAVA-BUILD-VALIDATION.md) and
+[public-content review](PUBLIC-CONTENT-REVIEW.md). The 1.0.2 release uses the
+clean-built runtime. The historical checks below retain their original scope.
 
 **Current follow-up:** version 1.0.1 fixes the documented no-PT scenario.
 Fifteen tests pass, and full Java runs pass for empty service lists and
@@ -28,7 +33,8 @@ are locked by pnpm-lock.yaml. The exact Python validation environment is listed
 in requirements-tested-windows-py312.txt; the toolkit still declares supported
 version ranges in its normal requirements files.
 
-Not established by these checks:
+Not established by those earlier checks (the first two are now addressed by
+the September 13 build report):
 
 - A complete new Java/MATSim simulation on a clean machine.
 - A clean rebuild proving source-to-binary correspondence for the modified JAR.

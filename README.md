@@ -1,15 +1,16 @@
 # UAM Scenario Toolkit (UST)
 
-**Download the complete toolkit:** [UST-Toolkit-v1.0.1.zip and checksums](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.1-prepared).
-This prepared prerelease includes the exact modified MATSim-UAM runtime and
+**Download the complete toolkit:** [UST-Toolkit-v1.0.2.zip and checksums](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.2-prepared).
+This prepared prerelease includes the source-built modified MATSim-UAM runtime and
 compiled dashboard. No manual Java edits or rebuild are needed. See
 [download, checksum and setup instructions](docs/RUNTIME-DOWNLOAD.md).
 Sign in with repository access while this repository is private. GitHub's
 automatic source ZIP and Git clones do not include the runtime JAR.
 
-**Validation status:** version 1.0.1 fixes UAM/car-only scenarios with empty
-train/bus lists or disabled public transport. Fifteen tests and both no-PT
-Java smoke scenarios pass. See [fix validation and limits](docs/OPTIONAL-TRANSPORT-FIX.md).
+**Validation status:** version 1.0.2 includes the 1.0.1 no-PT fix and a verified
+clean Java build. Fifteen regression tests and four original/rebuilt Java smoke
+runs pass. See [Java build evidence](docs/JAVA-BUILD-VALIDATION.md) and
+[release readiness](docs/RELEASE-READINESS.md).
 
 UST is a modular toolkit for designing, running, and inspecting Urban Air
 Mobility scenarios with MATSim-UAM. It builds vertiport micro-topology,
@@ -18,9 +19,10 @@ and a browser-based analytics dashboard from user-supplied scenario parameters.
 
 Author: **Chirag Srinivas** ([Chirag-Srinivas on GitHub](https://github.com/Chirag-Srinivas)). This is a research release; continued development or support is not promised. See [maintenance status](MAINTENANCE.md).
 
-This is a fresh, scenario-agnostic source distribution. It contains no previous
-case-study inputs, experiment matrix, population, base network, results, or
-one-off analysis scripts. A user supplies a MATSim base network and edits
+This is a fresh, scenario-agnostic source distribution. It excludes the owner's
+case-study inputs, experiment matrix, population, base network, results, and
+one-off analysis scripts. Preserved upstream Java test fixtures are identified
+in [the content review](docs/PUBLIC-CONTENT-REVIEW.md). A user supplies a MATSim base network and edits
 `src/config.py` to design a new scenario.
 
 ## Contents
@@ -87,7 +89,7 @@ generic setup checklist and copy-ready parameter shapes are in
 ## Requirements
 
 The research runtime uses **MATSim 2024.0**, **Java 21**, and a locally modified
-**UAM Extension 5.0.0**. The release ZIP preserves the current edited executable
+**UAM Extension 5.0.0**. The 1.0.2 release ZIP supplies the runtime built from the included source
 and POM; see [runtime provenance](lib/MATSim/PROVENANCE.json).
 
 - Python 3.11 or newer;
@@ -376,8 +378,9 @@ pnpm run build
 ```
 
 The GitHub Actions workflow installs Python dependencies, compiles the Python
-source, and performs a clean frontend build. Full MATSim integration is not run
-in CI because the user-supplied network is deliberately absent.
+source, and performs a clean frontend build. A separate Java release workflow
+builds the modified source and runs synthetic MATSim scenarios with generated
+inputs. See [build validation](docs/JAVA-BUILD-VALIDATION.md).
 
 Runtime test directories from development are not included in this release.
 
@@ -443,13 +446,13 @@ One repository supports two versioned downloads:
 
 | Download | Intended use |
 | --- | --- |
-| `UST-Toolkit-v1.0.1.zip` | Configure a fresh scenario; includes the modified runtime and dashboard. |
+| `UST-Toolkit-v1.0.2.zip` | Configure a fresh scenario; includes the modified runtime and dashboard. |
 | `UST-MSc-Research-Archive-v1.0.0.zip` | Explore the frozen MSc project, including definitive and clearly labelled historical results. |
 
 The research archive preserves `IRP_RESULTS_FINAL` (including T1) as the
 definitive study. See [study provenance](experiments/msc-study/README.md).
 Large downloads are release assets or external archive links, not Git files.
-The [prepared toolkit prerelease](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.1-prepared)
+The [prepared toolkit prerelease](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.2-prepared)
 provides the exact toolkit bundle and checksum. The MSc archive download is
 not hosted here. Public-release review remains documented in
 [release readiness](docs/RELEASE-READINESS.md).
