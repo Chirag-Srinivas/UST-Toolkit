@@ -50,7 +50,7 @@ jobs:
           python scripts/java_release_smoke.py audit/downloads/UST-Toolkit-v1.0.1.zip audit/source/target/matsim-uam-5.0.0.jar audit/smoke audit/evidence
       - name: Check recorded comparison results
         run: |
-          python -c "import json; r=json.load(open('audit/evidence/java-comparison.json')); assert r['application_code_matches'] and not r['dependency_class_byte_differences'] and not r['missing_dependency_classes'] and not r['extra_dependency_classes'], r"
+          python -c "import json; r=json.load(open('audit/evidence/java-comparison.json')); assert r['application_code_matches'] and r['dependency_code_matches'] and not r['dtd_resource_differences'], r"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

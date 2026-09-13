@@ -7,6 +7,7 @@ import json
 import re
 import subprocess
 import sys
+import tempfile
 import xml.etree.ElementTree as ET
 import zipfile
 
@@ -67,3 +68,30 @@ result['application_code_matches'] = (
 )
 (output/'java-comparison.json').write_text(json.dumps(result, indent=2))
 print(json.dumps({'application_code_matches':result['application_code_matches'],'legacy_class_references':legacy_references,'dependency_class_byte_differences':dependency_differences,'missing_dependency_classes':dependency_missing,'extra_dependency_classes':dependency_extra},indent=2))
+
+# Module descriptors contain declarations rather than executable method bodies.
+# Compare their javap declarations explicitly; other changed dependency classes fail.
+descriptor_differences = []
+descriptor_outputs = {}
+for name in dependency_differences:
+    if not re.fullmatch(r'META-INF/versions/\d+/module-info\.class', name):
+        descriptor_differences.append(name)
+        continue
+    declarations = []
+    for jar in (original, rebuilt):
+        with tempfile.TemporaryDirectory() as temp:
+            target = Path(temp)/'module-info.class'
+            with zipfile.ZipFile(jar) as z:
+                target.write_bytes(z.read(name))
+            text = subprocess.run(['javap','-p','-s','-constants',str(target)],
+                                  capture_output=True,text=True,check=True).stdout
+            declarations.append(text)
+    descriptor_outputs[name] = {'original':declarations[0], 'rebuilt':declarations[1]}
+    if declarations[0] != declarations[1]:
+        descriptor_differences.append(name)
+result['dependency_descriptor_differences'] = descriptor_differences
+result['dependency_code_matches'] = not (descriptor_differences or dependency_missing or dependency_extra)
+result['comparison_scope'] = 'All application classes by bytes or normalized javap instructions/signatures/constants; dependency classes by bytes, except module descriptors compared by javap declarations. DTD resources compared by bytes. This does not assert whole-JAR byte reproducibility.'
+(output/'module-descriptors.json').write_text(json.dumps(descriptor_outputs,indent=2))
+(output/'java-comparison.json').write_text(json.dumps(result,indent=2))
+print(json.dumps({'dependency_code_matches':result['dependency_code_matches'],'dependency_descriptor_differences':descriptor_differences},indent=2))
