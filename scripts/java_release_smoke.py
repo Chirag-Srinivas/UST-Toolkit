@@ -54,7 +54,7 @@ for runtime in ('original', 'rebuilt'):
         events = []
         for i,(a,b) in enumerate(((vertiports[0],vertiports[1]),(vertiports[1],vertiports[0]))):
             events.append(dict(source_name=f'synthetic_{i}',origin_x=a['x'],origin_y=a['y'],dest_x=b['x'],dest_y=b['y'],vertiport_id=a['id'],dest_vertiport_id=b['id'],access_mode='car',flight_mode='uam',t_event=28800+600*i,c_source=6,uam_adoption=1.0,initial_uam_count=4,initial_ground_plan='car',release_delay_mean_s=30,release_delay_std_s=5,high_urgency_ratio=0.5))
-        settings = dict(SCENARIO_NAME='synthetic_java_build_validation',MODULE5_CRS='EPSG:27700',NITER=1,WRITE_PLANS_INTERVAL=1,FLEET_SIZE=4,DEMAND_RANDOM_SEED=42,VERTIPORTS=vertiports,AERIAL_ROUTES=[dict(from_vertiport='1',to_vertiport='2',bidirectional=True)],DEMAND_EVENTS=events,MODULE5_AUTO_LAUNCH=False,TRANSPORT_SUPPLY=dict(enabled=not disabled,trains=[],buses=[]))
+        settings = dict(SCENARIO_NAME='synthetic_java_build_validation',MODULE5_CRS='EPSG:27700',NITER=1,WRITE_PLANS_INTERVAL=1,FLEET_SIZE=4,DEMAND_RANDOM_SEED=42,VERTIPORTS=vertiports,AERIAL_ROUTES=[dict(id='synthetic_route',from_vertiport='1',to_vertiport='2',bidirectional=True)],DEMAND_EVENTS=events,MODULE5_AUTO_LAUNCH=False,TRANSPORT_SUPPLY=dict(enabled=not disabled,trains=[],buses=[]))
         with (kit/'src/config.py').open('a') as config:
             config.write('\n# Isolated synthetic Java build validation.\n')
             for key,value in settings.items():
