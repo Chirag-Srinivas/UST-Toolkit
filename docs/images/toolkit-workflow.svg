@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="392" viewBox="0 0 1280 392" role="img" aria-labelledby="title desc">
+<title id="title">UST workflow: configure, generate, simulate, analyse</title>
+<desc id="desc">Provide a network and scenario parameters. UST generates topology, demand and optional transport supply, runs MATSim-UAM, then presents playback and analytics.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0a1d25"/><stop offset="1" stop-color="#061218"/></linearGradient><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="none" stroke="#8399a5" stroke-width="1.5"/></marker></defs>
+<rect width="1280" height="392" rx="20" fill="url(#bg)"/>
+<g font-family="Segoe UI,Arial,sans-serif">
+<text x="36" y="48" fill="#45d8c0" font-size="16" font-weight="700" letter-spacing="2">UAM SCENARIO TOOLKIT</text>
+<text x="36" y="92" fill="#e8f2f5" font-size="31" font-weight="700">From scenario inputs to simulation insight</text>
+<g fill="#10252e" stroke="#29444f"><rect x="36" y="126" width="265" height="180" rx="14"/><rect x="350" y="126" width="265" height="180" rx="14"/><rect x="664" y="126" width="265" height="180" rx="14"/><rect x="978" y="126" width="265" height="180" rx="14"/></g>
+<g stroke="#8399a5" stroke-width="2" marker-end="url(#arrow)"><path d="M313 216h25"/><path d="M627 216h25"/><path d="M941 216h25"/></g>
+<g font-size="15" font-weight="700"><text x="58" y="160" fill="#45d8c0">01 / CONFIGURE</text><text x="372" y="160" fill="#85cbf4">02 / GENERATE</text><text x="686" y="160" fill="#ffb97f">03 / SIMULATE</text><text x="1000" y="160" fill="#c1a5ff">04 / ANALYSE</text></g>
+<g fill="#e8f2f5" font-size="24" font-weight="700"><text x="58" y="201">Define your scenario</text><text x="372" y="201">Build the inputs</text><text x="686" y="201">Run MATSim-UAM</text><text x="1000" y="201">Explore the results</text></g>
+<g fill="#a8bdc7" font-size="17"><text x="58" y="240">Network, vertiports, routes,</text><text x="58" y="268">demand and fleet settings</text><text x="372" y="240">Topology, passenger plans</text><text x="372" y="268">and optional bus / rail supply</text><text x="686" y="240">Configured iterations,</text><text x="686" y="268">simulation events and outputs</text><text x="1000" y="240">Journey playback, queues</text><text x="1000" y="268">and traveller outcomes</text></g>
+<text x="36" y="354" fill="#8399a5" font-size="17">Bring your own scenario data. The toolkit provides the workflow and dashboard.</text>
+</g></svg>
+

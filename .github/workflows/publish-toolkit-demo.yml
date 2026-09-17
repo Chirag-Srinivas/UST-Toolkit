@@ -1,0 +1,29 @@
+name: Publish toolkit demo
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-toolkit-demo.yml'
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: github.repository == 'Chirag-Srinivas/UST-Toolkit' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Retrieve reviewed media and verify its checksum
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/ust-demo
+          gh api repos/$GITHUB_REPOSITORY/git/blobs/9b7db626ca4ff4fd261bb5c82aad5467b47a01e9 --jq .content | base64 --decode > /tmp/ust-demo/UST-Toolkit-demo.mp4
+          cd /tmp/ust-demo
+          echo 'ace2c9d50f66c22b4604b046193833bc9e51dfcc73b1f35be12fca8f12668d88  UST-Toolkit-demo.mp4' > SHA256SUMS-demo.txt
+          sha256sum -c SHA256SUMS-demo.txt
+      - name: Add the demo assets without replacing existing assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload v1.0.2-prepared /tmp/ust-demo/UST-Toolkit-demo.mp4 /tmp/ust-demo/SHA256SUMS-demo.txt --repo "$GITHUB_REPOSITORY"

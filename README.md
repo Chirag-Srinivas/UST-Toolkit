@@ -20,10 +20,22 @@ and a browser-based analytics dashboard from user-supplied scenario parameters.
 Author: **Chirag Srinivas** ([Chirag-Srinivas on GitHub](https://github.com/Chirag-Srinivas)). This is a research release; continued development or support is not promised. See [maintenance status](MAINTENANCE.md).
 
 This is a fresh, scenario-agnostic source distribution. It excludes the owner's
-case-study inputs, experiment matrix, population, base network, results, and
+case-study inputs, experiment matrix, population, base network, results datasets, and
 one-off analysis scripts. Preserved upstream Java test fixtures are identified
 in [the content review](docs/PUBLIC-CONTENT-REVIEW.md). A user supplies a MATSim base network and edits
 `src/config.py` to design a new scenario.
+
+## See the toolkit
+
+[![Watch the UST dashboard demo: multimodal journey playback](docs/images/demo-poster.jpg)](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4)
+
+**[Watch the 43-second demo](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4)** · MP4, 2.1 MB, silent with captions · [Screenshot gallery](docs/SHOWCASE.md)
+
+The edited recording illustrates the dashboard using an existing run. Its
+scenario data is not bundled with the toolkit, and the footage is not a new
+validation result.
+
+![UST workflow: configure a scenario, generate inputs, run MATSim-UAM, then explore playback and analytics](docs/images/toolkit-workflow.svg)
 
 ## Contents
 

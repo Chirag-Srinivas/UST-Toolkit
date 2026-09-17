@@ -1,0 +1,60 @@
+{
+  "date": "2026-09-17",
+  "video": {
+    "url": "https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4",
+    "durationSeconds": 43,
+    "width": 1280,
+    "height": 720,
+    "framesPerSecond": 30,
+    "audio": false
+  },
+  "files": {
+    "journey-detail.jpg": {
+      "sha256": "b646e73fb1465742141c3ba8345a71ec18dde028b0e41745cf91b1481dfdecb8",
+      "bytes": 126188
+    },
+    "demo-poster.jpg": {
+      "sha256": "447d43599e099c498841085697b0c246eb718a4f6b4fbae2e9ad70d0acdc9cc6",
+      "bytes": 102538
+    },
+    "operations-analytics.jpg": {
+      "sha256": "fb6b647a18b38a869769a8f8d2d369f9355117ced414bb872dafee8f34d1aa83",
+      "bytes": 92393
+    },
+    "UST-Toolkit-demo.mp4": {
+      "sha256": "ace2c9d50f66c22b4604b046193833bc9e51dfcc73b1f35be12fca8f12668d88",
+      "bytes": 2070317
+    },
+    "journey-overview.jpg": {
+      "sha256": "9bc09027a49f9c2e4f04292bc8d84bac0adc8eb7f768ec6d178b90f9c3f54263",
+      "bytes": 106341
+    },
+    "toolkit-workflow.svg": {
+      "sha256": "a88cb76938f0fcb502e1cfd595f6fbaa2f97642a1df67950fe84dd3876cefb0e",
+      "bytes": 2597
+    }
+  },
+  "edit": {
+    "sourceSha256": "fe80c781ed691b81bedfa7fca8715e9fb6a0a4cfae1f3a1823db923c645f835e",
+    "outputSha256": "ace2c9d50f66c22b4604b046193833bc9e51dfcc73b1f35be12fca8f12668d88",
+    "outputBytes": 2070317,
+    "sourceClipsSeconds": [
+      [
+        33,
+        60
+      ],
+      [
+        64.9,
+        67.3
+      ]
+    ],
+    "edits": [
+      "Removed thesis introduction, experimental-design and results slides",
+      "Replaced study title, run identifiers and original caption strip",
+      "Removed original audio; added silent toolkit captions and new title/end cards",
+      "Retained map attribution",
+      "No source scenario datasets included"
+    ],
+    "scope": "Edited historical interface footage; not a bundled scenario or a new validation run"
+  }
+}
