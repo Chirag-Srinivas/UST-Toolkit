@@ -1,5 +1,33 @@
 # UAM Scenario Toolkit (UST)
 
+Build urban air mobility scenarios, run MATSim-UAM, and explore journeys and
+operational analytics in a local dashboard.
+
+**[Get the toolkit](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.2-prepared)** · **[Quick start](#quick-start)** · **[Full-size gallery](docs/SHOWCASE.md)**
+
+## Preview
+
+[![UST dashboard demo preview](docs/images/demo-poster.jpg)](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4)
+
+[Download the captioned demo](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4) · 43 seconds · MP4 · 2.1 MB · Silent
+
+| Network playback | Journey detail | Queue analytics |
+| --- | --- | --- |
+| [![Explore a multimodal network](docs/images/journey-overview.jpg)](docs/images/journey-overview.jpg) | [![Follow a journey at street level](docs/images/journey-detail.jpg)](docs/images/journey-detail.jpg) | [![Inspect processing and dispatch queues](docs/images/operations-analytics.jpg)](docs/images/operations-analytics.jpg) |
+
+Click an image for a larger view. These edited views illustrate an existing
+run; its scenario data is not included in the toolkit.
+
+<details>
+<summary>See how the workflow fits together</summary>
+
+![UST workflow: configure, generate, simulate and analyse](docs/images/toolkit-workflow.svg)
+
+</details>
+
+## Download and validation
+
+
 **Download the complete toolkit:** [UST-Toolkit-v1.0.2.zip and checksums](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/tag/v1.0.2-prepared).
 This prepared prerelease includes the source-built modified MATSim-UAM runtime and
 compiled dashboard. No manual Java edits or rebuild are needed. See
@@ -12,11 +40,6 @@ clean Java build. Fifteen regression tests and four original/rebuilt Java smoke
 runs pass. See [Java build evidence](docs/JAVA-BUILD-VALIDATION.md) and
 [release readiness](docs/RELEASE-READINESS.md).
 
-UST is a modular toolkit for designing, running, and inspecting Urban Air
-Mobility scenarios with MATSim-UAM. It builds vertiport micro-topology,
-multimodal passenger demand, scheduled surface transport, MATSim configuration,
-and a browser-based analytics dashboard from user-supplied scenario parameters.
-
 Author: **Chirag Srinivas** ([Chirag-Srinivas on GitHub](https://github.com/Chirag-Srinivas)). This is a research release; continued development or support is not promised. See [maintenance status](MAINTENANCE.md).
 
 This is a fresh, scenario-agnostic source distribution. It excludes the owner's
@@ -24,18 +47,6 @@ case-study inputs, experiment matrix, population, base network, results datasets
 one-off analysis scripts. Preserved upstream Java test fixtures are identified
 in [the content review](docs/PUBLIC-CONTENT-REVIEW.md). A user supplies a MATSim base network and edits
 `src/config.py` to design a new scenario.
-
-## See the toolkit
-
-[![Watch the UST dashboard demo: multimodal journey playback](docs/images/demo-poster.jpg)](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4)
-
-**[Watch the 43-second demo](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4)** · MP4, 2.1 MB, silent with captions · [Screenshot gallery](docs/SHOWCASE.md)
-
-The edited recording illustrates the dashboard using an existing run. Its
-scenario data is not bundled with the toolkit, and the footage is not a new
-validation result.
-
-![UST workflow: configure a scenario, generate inputs, run MATSim-UAM, then explore playback and analytics](docs/images/toolkit-workflow.svg)
 
 ## Contents
 

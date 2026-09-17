@@ -5,9 +5,9 @@ dashboard. These views show the interface in use.
 
 ## Short demo
 
-[![Watch the UST dashboard demo](images/demo-poster.jpg)](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4)
+[![UST dashboard demo preview](images/demo-poster.jpg)](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4)
 
-[Watch or download the 43-second video](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4) (MP4, 1280 × 720, 30 fps, 2.1 MB).
+[Download the 43-second video](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4) (MP4, 1280 × 720, 30 fps, 2.1 MB).
 The demo is silent and uses on-screen captions.
 
 - 0:00–0:05: toolkit overview.
