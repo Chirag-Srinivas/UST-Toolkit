@@ -7,7 +7,7 @@ operational analytics in a local dashboard.
 
 ## Preview
 
-[![UST dashboard demo preview](docs/images/demo-poster.jpg)](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4)
+https://github.com/user-attachments/assets/24e1a65d-2f6a-412b-a930-1f30ba7f0198
 
 [Download the captioned demo](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4) · 43 seconds · MP4 · 2.1 MB · Silent
 

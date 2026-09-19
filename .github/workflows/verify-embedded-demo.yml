@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - '.github/workflows/verify-embedded-demo.yml'
+      - 'README.md'
+      - 'docs/SHOWCASE.md'
+      - 'docs/images/media-provenance.json'
 permissions:
   contents: read
   issues: read
@@ -12,33 +15,49 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Inspect attachment rendering and media identity
+      - name: Inspect attachment and rendered documentation
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p /tmp/ust-native-demo
           gh api repos/$GITHUB_REPOSITORY/issues/1 -H 'Accept: application/vnd.github.full+json' > /tmp/ust-native-demo/issue.json
-          curl --silent --show-error --location --header "Authorization: Bearer $GH_TOKEN" --output /tmp/ust-native-demo/video-response --write-out '%{http_code}' 'https://github.com/user-attachments/assets/24e1a65d-2f6a-412b-a930-1f30ba7f0198' > /tmp/ust-native-demo/status.txt
+          gh api repos/$GITHUB_REPOSITORY/readme -H 'Accept: application/vnd.github.html+json' > /tmp/ust-native-demo/readme.html
+          gh api repos/$GITHUB_REPOSITORY/contents/docs/SHOWCASE.md -H 'Accept: application/vnd.github.html+json' > /tmp/ust-native-demo/showcase.html
           python - <<'PY'
-          import hashlib,json,pathlib,re
+          import hashlib,json,pathlib,urllib.request,urllib.parse
+          from html.parser import HTMLParser
+          class Videos(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.sources=[]
+              def handle_starttag(self,tag,attrs):
+                  if tag=='video':
+                      self.sources.append(dict(attrs))
           p=pathlib.Path('/tmp/ust-native-demo')
           issue=json.loads((p/'issue.json').read_text())
-          body=issue.get('body_html','')
-          status=(p/'status.txt').read_text().strip()
-          media=p/'video-response'
-          sha=hashlib.sha256(media.read_bytes()).hexdigest() if status=='200' else None
-          result={'issue':issue['number'],'attachment':'https://github.com/user-attachments/assets/24e1a65d-2f6a-412b-a930-1f30ba7f0198','download_http_status':status,'bytes':media.stat().st_size if status=='200' else None,'sha256':sha,'matches_edited_demo':sha=='ace2c9d50f66c22b4604b046193833bc9e51dfcc73b1f35be12fca8f12668d88','rendered_video_tag':'<video' in body}
+          identity='24e1a65d-2f6a-412b-a930-1f30ba7f0198'
+          parser=Videos()
+          parser.feed(issue.get('body_html',''))
+          source=next(v['src'] for v in parser.sources if identity in v.get('src',''))
+          assert urllib.parse.urlsplit(source).scheme=='https'
+          assert urllib.parse.urlsplit(source).hostname in {'private-user-images.githubusercontent.com','user-images.githubusercontent.com','github.com'}
+          with urllib.request.urlopen(source,timeout=60) as response:
+              media=response.read(3000000)
+          sha=hashlib.sha256(media).hexdigest()
+          assert sha=='ace2c9d50f66c22b4604b046193833bc9e51dfcc73b1f35be12fca8f12668d88', 'Attachment differs from edited demo'
+          pages={}
+          for name in ('readme','showcase'):
+              parser=Videos()
+              parser.feed((p/(name+'.html')).read_text())
+              pages[name]=any(identity in v.get('src','') and 'controls' in v for v in parser.sources)
+              assert pages[name], name+' does not render the expected video player'
+          result={'attachment':'https://github.com/user-attachments/assets/'+identity,'bytes':len(media),'sha256':sha,'matches_edited_demo':True,'rendered_players':pages}
           (p/'verification.json').write_text(json.dumps(result,indent=2))
-          (p/'issue-rendered.html').write_text(body)
           print(json.dumps(result,indent=2))
-          if status=='200':
-              assert result['matches_edited_demo'], 'Uploaded video differs from edited demo'
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: embedded-demo-verification
-          path: |
-            /tmp/ust-native-demo/verification.json
-            /tmp/ust-native-demo/issue-rendered.html
-          retention-days: 7
+          path: /tmp/ust-native-demo/verification.json
+          retention-days: 30

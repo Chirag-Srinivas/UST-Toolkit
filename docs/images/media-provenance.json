@@ -6,7 +6,16 @@
     "width": 1280,
     "height": 720,
     "framesPerSecond": 30,
-    "audio": false
+    "audio": false,
+    "nativeAttachmentUrl": "https://github.com/user-attachments/assets/24e1a65d-2f6a-412b-a930-1f30ba7f0198",
+    "attachmentIssue": 1,
+    "attachmentAdded": "2026-09-19",
+    "attachmentVerification": {
+      "date": "2026-09-19",
+      "bytes": 2070317,
+      "sha256": "ace2c9d50f66c22b4604b046193833bc9e51dfcc73b1f35be12fca8f12668d88",
+      "matchesEditedDemo": true
+    }
   },
   "files": {
     "journey-detail.jpg": {

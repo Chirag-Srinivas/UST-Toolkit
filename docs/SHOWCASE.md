@@ -5,10 +5,11 @@ dashboard. These views show the interface in use.
 
 ## Short demo
 
-[![UST dashboard demo preview](images/demo-poster.jpg)](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4)
+https://github.com/user-attachments/assets/24e1a65d-2f6a-412b-a930-1f30ba7f0198
 
 [Download the 43-second video](https://github.com/Chirag-Srinivas/UST-Toolkit/releases/download/v1.0.2-prepared/UST-Toolkit-demo.mp4) (MP4, 1280 × 720, 30 fps, 2.1 MB).
-The demo is silent and uses on-screen captions.
+Press Play above to watch without saving the file. The demo is silent and uses
+on-screen captions. The download link is available separately.
 
 - 0:00–0:05: toolkit overview.
 - 0:05–0:32: network exploration and multimodal journey playback.
