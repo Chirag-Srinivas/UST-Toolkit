@@ -1,0 +1,44 @@
+name: Verify embedded demo
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/verify-embedded-demo.yml'
+permissions:
+  contents: read
+  issues: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Inspect attachment rendering and media identity
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/ust-native-demo
+          gh api repos/$GITHUB_REPOSITORY/issues/1 -H 'Accept: application/vnd.github.full+json' > /tmp/ust-native-demo/issue.json
+          curl --silent --show-error --location --header "Authorization: Bearer $GH_TOKEN" --output /tmp/ust-native-demo/video-response --write-out '%{http_code}' 'https://github.com/user-attachments/assets/24e1a65d-2f6a-412b-a930-1f30ba7f0198' > /tmp/ust-native-demo/status.txt
+          python - <<'PY'
+          import hashlib,json,pathlib,re
+          p=pathlib.Path('/tmp/ust-native-demo')
+          issue=json.loads((p/'issue.json').read_text())
+          body=issue.get('body_html','')
+          status=(p/'status.txt').read_text().strip()
+          media=p/'video-response'
+          sha=hashlib.sha256(media.read_bytes()).hexdigest() if status=='200' else None
+          result={'issue':issue['number'],'attachment':'https://github.com/user-attachments/assets/24e1a65d-2f6a-412b-a930-1f30ba7f0198','download_http_status':status,'bytes':media.stat().st_size if status=='200' else None,'sha256':sha,'matches_edited_demo':sha=='ace2c9d50f66c22b4604b046193833bc9e51dfcc73b1f35be12fca8f12668d88','rendered_video_tag':'<video' in body}
+          (p/'verification.json').write_text(json.dumps(result,indent=2))
+          (p/'issue-rendered.html').write_text(body)
+          print(json.dumps(result,indent=2))
+          if status=='200':
+              assert result['matches_edited_demo'], 'Uploaded video differs from edited demo'
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: embedded-demo-verification
+          path: |
+            /tmp/ust-native-demo/verification.json
+            /tmp/ust-native-demo/issue-rendered.html
+          retention-days: 7
